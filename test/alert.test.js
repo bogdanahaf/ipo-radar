@@ -11,7 +11,7 @@ import {
   wasAlertSent,
   writeAlertState
 } from "../scripts/lib/state.js";
-import { buildAlertMessage, buildPingMessage } from "../scripts/lib/telegram.js";
+import { buildAlertMessage, buildPingMessage, buildWeekDigestMessage } from "../scripts/lib/telegram.js";
 
 const events = [
   {
@@ -56,7 +56,31 @@ test("buildAlertMessage includes ticker, site, and disclaimer", () => {
 
   assert.match(message, /FIG/);
   assert.match(message, /Buzz 72\/100 \(high\)/);
+  assert.match(message, /~1h to open/);
   assert.match(message, /Open IPO Radar dashboard/);
+  assert.match(message, /Not financial or investment advice/);
+});
+
+test("buildWeekDigestMessage lists tickers and disclaimer", () => {
+  const message = buildWeekDigestMessage({
+    weekStart: "2026-05-11",
+    weekEnd: "2026-05-17",
+    events: [
+      {
+        symbol: "FIG",
+        companyName: "Future Figma Systems Inc",
+        ipoDate: "2026-05-11",
+        exchange: "NASDAQ",
+        priceRange: "$22 - $25",
+        buzzScore: 72,
+        attentionBand: "high",
+        buzzReasons: ["watchlist: figma"]
+      }
+    ],
+    siteUrl: "https://example.com/ipo-radar/"
+  });
+  assert.match(message, /week ahead/);
+  assert.match(message, /FIG/);
   assert.match(message, /Not financial or investment advice/);
 });
 

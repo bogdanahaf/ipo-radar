@@ -13,6 +13,7 @@ on:
           - ping
           - today
           - tomorrow
+          - week
           - both
       dry_run:
         description: Print alert text without posting to Telegram
@@ -22,6 +23,7 @@ on:
   schedule:
     - cron: "30 12,13 * * 1-5"
     - cron: "30 20,21 * * 1-5"
+    - cron: "0 21 * * 0"
 
 permissions:
   contents: write
@@ -73,10 +75,19 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+          IPO_HYPE_THRESHOLD: ${{ vars.IPO_HYPE_THRESHOLD }}
 
       - name: Send scheduled next-day alert
         if: github.event_name == 'schedule' && github.event.schedule == '30 20,21 * * 1-5'
         run: npm run alert -- --type tomorrow
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+
+      - name: Send Sunday week digest
+        if: github.event_name == 'schedule' && github.event.schedule == '0 21 * * 0'
+        run: npm run alert -- --type week
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -131,6 +142,9 @@ jobs:
             tomorrow)
               npm run alert -- --type tomorrow $extra
               ;;
+            week)
+              npm run alert -- --type week $extra
+              ;;
             both)
               npm run alert -- --type today $extra
               npm run alert -- --type tomorrow $extra
@@ -140,6 +154,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+          IPO_HYPE_THRESHOLD: ${{ vars.IPO_HYPE_THRESHOLD }}
 
       - name: Commit updated data and alert state
         if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false

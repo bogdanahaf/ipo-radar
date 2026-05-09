@@ -54,6 +54,29 @@ export function compareYmd(a, b) {
   return a.localeCompare(b);
 }
 
+export function weekdayShortNY(ymd) {
+  const [year, month, day] = ymd.split("-").map(Number);
+  const anchor = new Date(Date.UTC(year, month - 1, day, 16, 0, 0));
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: MARKET_TIME_ZONE,
+    weekday: "short"
+  }).format(anchor);
+}
+
+const DAYS_TO_UPCOMING_MONDAY = { Sun: 1, Mon: 0, Tue: 6, Wed: 5, Thu: 4, Fri: 3, Sat: 2 };
+
+/** Next Mon–Sun block: Monday is the upcoming calendar Monday (on Sunday, that is tomorrow). */
+export function upcomingCalendarWeekMonday(todayYmd) {
+  const short = weekdayShortNY(todayYmd);
+  const delta = DAYS_TO_UPCOMING_MONDAY[short];
+  if (delta == null) return todayYmd;
+  return addDays(todayYmd, delta);
+}
+
+export function weekRangeMondayToSunday(mondayYmd) {
+  return { weekStart: mondayYmd, weekEnd: addDays(mondayYmd, 6) };
+}
+
 function toYmd(year, month, day) {
   if (!year || !month || !day || month < 1 || month > 12 || day < 1 || day > 31) {
     return "";

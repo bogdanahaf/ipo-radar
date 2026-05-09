@@ -2,14 +2,15 @@
 import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { nextBusinessDay, ymdInTimeZone } from "./lib/dates.js";
+import { isHypeIpoEvent, selectWeekEvents } from "./lib/alerts.js";
+import { nextBusinessDay, upcomingCalendarWeekMonday, weekRangeMondayToSunday, ymdInTimeZone } from "./lib/dates.js";
 import {
   markAlertSent,
   readAlertState,
   wasAlertSent,
   writeAlertState
 } from "./lib/state.js";
-import { buildAlertMessage, buildPingMessage, sendTelegramMessage } from "./lib/telegram.js";
+import { buildAlertMessage, buildPingMessage, buildWeekDigestMessage, sendTelegramMessage } from "./lib/telegram.js";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -44,14 +45,71 @@ export async function main(argv) {
   const statePath = resolve(rootDir, args.state ?? "docs/data/alert-state.json");
   const now = args.now ? new Date(args.now) : new Date();
   const today = ymdInTimeZone(now);
+
+  if (type === "week") {
+    const payload = JSON.parse(await readFile(dataPath, "utf8"));
+    const weekStart = args.weekStart ?? upcomingCalendarWeekMonday(today);
+    const { weekEnd } = weekRangeMondayToSunday(weekStart);
+    const events = selectWeekEvents(payload.events ?? [], weekStart, weekEnd);
+    const text = buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl: process.env.IPO_RADAR_SITE_URL });
+
+    if (args.dryRun) {
+      console.log(text);
+      process.exit(0);
+    }
+
+    if (events.length === 0 && !args.sendEmpty) {
+      console.log(`No IPOs in week window ${weekStart}..${weekEnd}; nothing sent.`);
+      process.exit(0);
+    }
+
+    const state = await readAlertState(statePath);
+    if (wasAlertSent(state, "week", weekStart)) {
+      console.log(`Week digest for ${weekStart} was already sent; skipping.`);
+      process.exit(0);
+    }
+
+    await sendTelegramMessage({
+      token: process.env.TELEGRAM_BOT_TOKEN,
+      chatId: process.env.TELEGRAM_CHAT_ID,
+      text
+    });
+
+    await writeAlertState(statePath, markAlertSent(state, "week", weekStart, events));
+    console.log(`Sent week digest ${weekStart}..${weekEnd} with ${events.length} IPOs.`);
+    process.exit(0);
+  }
+
   const targetDate = args.targetDate ?? (type === "today" ? today : nextBusinessDay(today));
 
   if (!["today", "tomorrow"].includes(type)) {
-    throw new Error("--type must be today, tomorrow, or ping.");
+    throw new Error("--type must be today, tomorrow, week, or ping.");
   }
 
   const payload = JSON.parse(await readFile(dataPath, "utf8"));
-  const events = selectAlertEvents(payload.events ?? [], targetDate);
+  let events = selectAlertEvents(payload.events ?? [], targetDate);
+
+  if (type === "today") {
+    const hypeOnly = events.filter((event) => isHypeIpoEvent(event));
+    if (hypeOnly.length === 0) {
+      if (args.dryRun) {
+        console.log(
+          events.length
+            ? `Dry run: ${events.length} IPO(s) today but none passed the hype gate; no message would be sent.`
+            : "Dry run: no IPOs today; no message would be sent."
+        );
+        process.exit(0);
+      }
+      console.log(
+        events.length
+          ? `No hype-tier IPOs for ${targetDate}; skipping pre-open alert (${events.length} non-hype listing(s) ignored).`
+          : `No interesting IPOs for ${type} alert ${targetDate}; nothing sent.`
+      );
+      process.exit(0);
+    }
+    events = hypeOnly;
+  }
+
   const text = buildAlertMessage({
     type,
     targetDate,
@@ -100,6 +158,7 @@ function parseArgs(argv) {
     else if (arg === "--state") parsed.state = argv[++index];
     else if (arg === "--now") parsed.now = argv[++index];
     else if (arg === "--target-date") parsed.targetDate = argv[++index];
+    else if (arg === "--week-start") parsed.weekStart = argv[++index];
     else if (arg === "--dry-run") parsed.dryRun = true;
     else if (arg === "--send-empty") parsed.sendEmpty = true;
   }

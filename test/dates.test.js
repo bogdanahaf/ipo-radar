@@ -1,6 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { nextBusinessDay, parseYmd, ymdInTimeZone } from "../scripts/lib/dates.js";
+import {
+  nextBusinessDay,
+  parseYmd,
+  upcomingCalendarWeekMonday,
+  ymdInTimeZone
+} from "../scripts/lib/dates.js";
 
 test("parseYmd accepts ISO and US slash dates", () => {
   assert.equal(parseYmd("2026-05-11"), "2026-05-11");
@@ -15,4 +20,9 @@ test("nextBusinessDay skips weekends", () => {
 
 test("ymdInTimeZone uses New York market date", () => {
   assert.equal(ymdInTimeZone(new Date("2026-05-09T03:00:00.000Z")), "2026-05-08");
+});
+
+test("upcomingCalendarWeekMonday anchors the next Mon–Sun block", () => {
+  assert.equal(upcomingCalendarWeekMonday("2026-05-10"), "2026-05-11");
+  assert.equal(upcomingCalendarWeekMonday("2026-05-11"), "2026-05-11");
 });

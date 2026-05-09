@@ -4,146 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IPO Radar</title>
-    <meta
-      name="description"
-      content="Free DIY IPO calendar: day-before and pre-open Telegram alerts, plus a static dashboard on GitHub Pages."
-    >
+    <meta name="description" content="IPO calendar and buzz heuristics (not investment advice).">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="topbar">
+    <header class="header">
       <div>
-        <p class="eyebrow">IPO Radar</p>
-        <h1>Upcoming IPO watchlist</h1>
-        <p class="lede">
-          A minimal, self-hosted radar: calendar on Pages, two Telegram beats aligned with how retail IPOs
-          actually show up on the tape (not allocation lotteries).
-        </p>
+        <h1>IPO Radar</h1>
+        <p class="meta" id="meta">Loading…</p>
       </div>
-      <div class="status" id="status">Loading data</div>
     </header>
 
-    <main class="layout">
-      <section class="guide" aria-label="How this fits your workflow">
-        <div class="guide__intro">
-          <p class="eyebrow">Why this exists</p>
-          <h2 class="guide__title">Cheap alerts without a $29/month digest</h2>
-          <p class="guide__text">
-            Paid services bundle email, SMS, and “AI S-1” tiers. If your real need is simpler, a small
-            pipeline on GitHub Actions plus a Telegram channel gets you most of the calendar signal for
-            the cost of a free Alpha Vantage key and a bot token.
-          </p>
-        </div>
-        <div class="guide__grid">
-          <article class="guide-card">
-            <h3>What IPO Radar covers</h3>
-            <ul class="guide-list">
-              <li>
-                <strong>Next session preview</strong> — after the US close, a digest of filtered listings
-                for the next market day (your “know who is going public tomorrow” beat).
-              </li>
-              <li>
-                <strong>Pre-open ping</strong> — on listing day, about an hour before the US cash session
-                opens, a short reminder for the same filtered set.
-              </li>
-              <li>
-                <strong>Buzz meter</strong> — each row gets a simple <code>buzzScore</code> from name
-                keywords, venue, price band, and your watchlist. It is <em>narrative heat</em> for sorting
-                attention, not a model of first-day returns.
-              </li>
-              <li>
-                <strong>Watchlist bias</strong> — set <code>IPO_WATCHLIST</code> in GitHub variables to
-                boost names you care about; everything still renders on this page for manual review.
-              </li>
-            </ul>
-          </article>
-          <article class="guide-card guide-card--muted">
-            <h3>What it does not cover</h3>
-            <ul class="guide-list">
-              <li>
-                <strong>Broker-specific “stages”</strong> — lines like “allocation window open” or “IPO
-                tonight after close” are workflow states inside Robinhood, SoFi, or other apps. They are
-                not in the public IPO calendar feed this project uses; keep those notifications inside
-                the broker if you still participate in allocations.
-              </li>
-              <li>
-                <strong>Schwab, IBKR, Robinhood hooks</strong> — no brokerage integration, no order flow,
-                no advice. Use each firm’s own alerts, watchlists, and corporate-action notices alongside
-                this calendar.
-              </li>
-            </ul>
-          </article>
-        </div>
-        <p class="guide__footnote">
-          Educational only. Data comes from Alpha Vantage’s IPO calendar; verify filings and symbols with
-          the exchange or SEC before you trade.
-        </p>
-      </section>
-
-      <section class="metrics" aria-label="IPO counts">
-        <div class="metric">
-          <span class="metric__label">Visible</span>
-          <strong id="visible-count">0</strong>
-        </div>
-        <div class="metric">
-          <span class="metric__label">Filtered</span>
-          <strong id="hidden-count">0</strong>
-        </div>
-        <div class="metric">
-          <span class="metric__label">Updated</span>
-          <strong id="updated-at">Never</strong>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel__heading">
-          <div>
-            <p class="eyebrow">Next market day</p>
-            <h2 id="tomorrow-title">Tomorrow</h2>
-          </div>
-        </div>
-        <div class="ipo-list" id="tomorrow-list"></div>
-      </section>
-
-      <section class="panel">
-        <div class="panel__heading">
-          <div>
-            <p class="eyebrow">Market day</p>
-            <h2 id="today-title">Today</h2>
-          </div>
-        </div>
-        <div class="ipo-list" id="today-list"></div>
-      </section>
-
-      <section class="panel">
-        <div class="panel__heading">
-          <div>
-            <p class="eyebrow">Calendar</p>
-            <h2>Upcoming</h2>
-          </div>
-        </div>
-        <div class="ipo-list ipo-list--compact" id="upcoming-list"></div>
-      </section>
-
-      <section class="panel">
-        <div class="panel__heading">
-          <div>
-            <p class="eyebrow">Noise control</p>
-            <h2>Filtered out</h2>
-          </div>
-        </div>
-        <div class="ipo-list ipo-list--compact" id="hidden-list"></div>
-      </section>
-
-      <section class="sources" aria-label="Sources">
-        <a href="https://www.alphavantage.co/documentation/#ipo-calendar">Alpha Vantage IPO Calendar</a>
-        <a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces">SEC EDGAR APIs</a>
-        <a href="https://www.nasdaq.com/market-activity/ipos">Nasdaq IPO Calendar</a>
+    <main class="main">
+      <p class="hint">
+        Buzz = narrative sorting only. Telegram: Sunday week digest, weekday after-close next day, pre-open
+        only when a hype-tier name lists that session.
+      </p>
+      <section class="list-wrap" aria-label="Upcoming IPOs">
+        <div class="list" id="list"></div>
       </section>
     </main>
 
     <footer class="footer">
-      Educational only. Not financial or investment advice.
+      <a href="https://www.alphavantage.co/documentation/#ipo-calendar">Data: Alpha Vantage</a>
+      · Educational only, not advice.
     </footer>
 
     <script type="module" src="app.js"></script>

@@ -1,6 +1,6 @@
 # IPO Radar
 
-IPO Radar is a lightweight GitHub Pages site plus Telegram alert pipeline for one job: do not miss interesting IPOs the day before listing and about one hour before the US market opens.
+IPO Radar is a lightweight GitHub Pages site plus a Telegram pipeline: a **Sunday week digest**, **weekday after-close “next session”** list, and a **pre-open ping only when at least one hype-tier name** lists that day. Static Pages cannot call Telegram directly; GitHub Actions posts on a schedule.
 
 It uses the Alpha Vantage `IPO_CALENDAR` endpoint as the main free data source, filters noisy rows like likely SPACs and units, renders a static dashboard from `docs/data/ipos.json`, and posts alerts to a Telegram channel through a bot.
 
@@ -11,8 +11,9 @@ It uses the Alpha Vantage `IPO_CALENDAR` endpoint as the main free data source, 
 - Scores IPOs with simple explainable rules.
 - Keeps filtered rows visible on the site, but out of Telegram alerts.
 - Sends Telegram alerts for:
-  - next market day IPOs after market close
-  - same-day IPOs about one hour before market open
+  - **Sunday 21:00 UTC** — Mon–Sun **week digest** (filtered IPOs in that window + buzz lines).
+  - **Mon–Fri after the US close** — filtered names for the **next** market day.
+  - **Mon–Fri ~1 hour before the open** — **only if** that session has at least one **hype** IPO (`attentionBand: high` **or** `buzzScore ≥` threshold; default threshold **68**, override with `IPO_HYPE_THRESHOLD`).
 - Adds a **buzz** line per listing: keyword + venue + price-band heuristics for “narrative heat” only (not a return or volatility forecast).
 - Stores `docs/data/alert-state.json` to avoid duplicate channel posts.
 
@@ -31,6 +32,7 @@ npm run refresh -- --input test/fixtures/alpha-vantage-sample.csv
 npm run alert:tomorrow:dry
 npm run alert:today:dry
 npm run alert:ping:dry
+npm run alert:week:dry
 ```
 
 For a live refresh:
@@ -54,7 +56,7 @@ npm run alert -- --type tomorrow
 - **Ping skips the Alpha Vantage refresh** so you can prove Telegram wiring even if `ALPHAVANTAGE_API_KEY` is missing or rate-limited. Full runs still require the key for `npm run refresh`.
 - **Local:** `npm run alert:ping` with the same `TELEGRAM_*` and `IPO_RADAR_SITE_URL` env vars.
 
-Scheduled runs still send **tomorrow’s list after the close** and **today’s list about an hour before the US open** (see cron times below). There is no separate “full day” digest unless you add another cron or run the workflow manually.
+**Test the full flow:** Actions → IPO Radar → `alert_type: none` (refresh + deploy), then `week` or `tomorrow` with `dry_run: false` after data exists. `ping` still skips Alpha Vantage.
 
 ## GitHub setup
 
@@ -73,6 +75,7 @@ git push -u origin main
 4. In GitHub, add repository variables:
    - `IPO_RADAR_SITE_URL`, for example `https://YOUR_USER.github.io/ipo-radar/`
    - optional `IPO_WATCHLIST`, comma-separated company keywords
+   - optional `IPO_HYPE_THRESHOLD` (number, default `68` for the pre-open hype gate)
 5. In repository Settings -> Pages, set the source to GitHub Actions.
 6. Run the `IPO Radar` workflow manually once.
 
@@ -117,10 +120,11 @@ Rules in v1:
 
 ## Schedules
 
-GitHub Actions cron is UTC, so the workflow runs duplicate DST-safe schedules:
+Cron times are UTC (duplicate morning slots stay DST-safe):
 
-- `12:30` and `13:30` UTC for the morning alert.
-- `20:30` and `21:30` UTC for the after-close next-day alert.
+- **Weekday pre-open hype gate:** `30 12` and `30 13` Mon–Fri — `today` alert (skipped automatically if no hype-tier IPOs that session).
+- **Weekday after-close:** `30 20` and `30 21` Mon–Fri — `tomorrow` digest.
+- **Sunday week digest:** `0 21` — `week` (upcoming Mon–Sun window in America/New_York calendar dates).
 
 Duplicate prevention is handled by `docs/data/alert-state.json`.
 

@@ -3,10 +3,11 @@ export function buildPingMessage({ siteUrl }) {
     "<b>IPO Radar: Telegram is connected.</b>",
     "",
     "You should receive:",
-    "• After the US close — filtered names for the <b>next</b> market day.",
-    "• On listing day — about <b>one hour before</b> the regular session opens.",
+    "• <b>Sunday</b> — week-ahead digest (Mon–Sun calendar window, filtered list + buzz).",
+    "• <b>Weekdays after the close</b> — filtered names for the <b>next</b> market day.",
+    "• <b>~1h before the open</b> — only if that session has at least one <b>hype</b> IPO (high buzz / band).",
     "",
-    "<i>Buzz scores are heuristic “narrative heat” only, not forecasts of returns or volatility.</i>",
+    "<i>Buzz is narrative sorting only, not odds of “ripping” or volatility.</i>",
     ""
   ];
 
@@ -19,10 +20,60 @@ export function buildPingMessage({ siteUrl }) {
   return trimTelegramMessage(lines.join("\n"));
 }
 
+export function buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl }) {
+  const lines = [
+    `<b>IPO Radar: week ahead (${escapeHtml(weekStart)} → ${escapeHtml(weekEnd)})</b>`,
+    "",
+    "<i>Heuristic buzz only — not performance, liquidity, or “chance to fly” odds.</i>",
+    ""
+  ];
+
+  if (events.length === 0) {
+    lines.push("No filtered IPOs land in this Mon–Sun window.");
+  } else {
+    for (const event of events) {
+      lines.push(
+        `<b>${escapeHtml(event.symbol || "TBD")}</b> · ${escapeHtml(formatWeekIpoDate(event.ipoDate))} · ${escapeHtml(
+          event.companyName || "Unknown company"
+        )}`
+      );
+      const bits = [event.exchange, event.priceRange].filter(Boolean);
+      if (bits.length) lines.push(escapeHtml(bits.join(" · ")));
+      if (event.buzzScore != null && event.attentionBand) {
+        const buzzLine = [
+          `Buzz ${event.buzzScore}/100 (${event.attentionBand})`,
+          event.buzzReasons?.length ? escapeHtml(event.buzzReasons.slice(0, 3).join("; ")) : ""
+        ].filter(Boolean);
+        lines.push(buzzLine.join(" — "));
+      }
+      lines.push("");
+    }
+  }
+
+  if (siteUrl) {
+    lines.push(`<a href="${escapeHtml(siteUrl)}">Dashboard</a>`);
+    lines.push("");
+  }
+
+  lines.push("Educational only. Not financial or investment advice.");
+  return trimTelegramMessage(lines.join("\n"));
+}
+
+function formatWeekIpoDate(ymd) {
+  if (!ymd) return "TBD";
+  const [y, m, d] = ymd.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC"
+  }).format(new Date(Date.UTC(y, m - 1, d)));
+}
+
 export function buildAlertMessage({ type, targetDate, events, siteUrl }) {
   const title =
     type === "today"
-      ? `IPO Radar: market opens in about 1 hour (${targetDate})`
+      ? `IPO Radar: ~1h to open — high-attention IPOs (${targetDate})`
       : `IPO Radar: interesting IPOs for next market day (${targetDate})`;
 
   const lines = [escapeHtml(title), ""];
