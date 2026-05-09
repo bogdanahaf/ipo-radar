@@ -81,6 +81,11 @@ git push -u origin main
 5. In repository Settings -> Pages, set the source to GitHub Actions.
 6. Run the `IPO Radar` workflow manually once.
 
+### Pages UI looks stale
+
+- Hard-refresh the site (**Cmd+Shift+R** / **Ctrl+Shift+R**). GitHub’s CDN can cache HTML for a bit.
+- If the main **IPO Radar** workflow fails before **Deploy to GitHub Pages** (tests, Alpha Vantage, Telegram, etc.), the public site will not update. Run **Actions → “Pages site only” → Run workflow** to publish whatever is already on `main` under `docs/` (no API, no tests, no commits).
+
 ## Telegram setup
 
 1. Create a bot with BotFather and copy the token.
