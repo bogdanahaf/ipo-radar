@@ -103,7 +103,10 @@ export function clampMediaSpotlight(value, ceiling) {
   return MEDIA_SPOTLIGHT_LEVELS[Math.min(vi, ci)];
 }
 
-export function buildWeekPerTickerWebPrompt(events, contextLine) {
+/**
+ * @param {"week_ahead" | "listing_session"} promptMode
+ */
+export function buildPerTickerWebPrompt(events, contextLine, promptMode = "week_ahead", summaryMax = 300) {
   const rows = events
     .map((e) => {
       const ceiling = mediaSpotlightCeilingFromBuzz(e);
@@ -113,21 +116,33 @@ export function buildWeekPerTickerWebPrompt(events, contextLine) {
     })
     .join("\n");
 
+  const modeHint =
+    promptMode === "week_ahead"
+      ? "This is a **week-ahead** digest: give a slightly richer read per name (still not investment advice) — latest reputable wires, pricing/allocation/greenshoe or valuation chatter **only if clearly sourced**; if thin coverage, say so."
+      : "This is a **listing-session** alert: prioritize **fresh wires** since prior digest (overnight / weekend), IPO-day pricing or allocation color **only if outlets report it**; if nothing new, say that plainly.";
+
   return `${contextLine}
+
+${modeHint}
 
 Filtered US IPO list (order matters). For EACH row use web_search as needed.
 
 Return ONLY valid JSON (no markdown code fences, no commentary before or after) with this exact shape:
-{"tickers":[{"symbol":"STRING","media_spotlight":"QUIET|TYPICAL|ELEVATED|VERY_ELEVATED","summary":"one or two tight English sentences; no buy/sell; no numeric % return forecasts; cite outlets as plain names (Reuters), not URLs"}]}
+{"tickers":[{"symbol":"STRING","media_spotlight":"QUIET|TYPICAL|ELEVATED|VERY_ELEVATED","summary":"tight English; no buy/sell; no numeric % return forecasts; cite outlets as plain names (Reuters), not URLs"}]}
 
 Rules:
 - Include exactly one ticker object per row below, in the SAME ORDER, same symbols.
 - media_spotlight MUST NOT exceed that row's spotlight_ceiling (QUIET ≤ TYPICAL ≤ ELEVATED ≤ VERY_ELEVATED).
 - If search finds little reputable coverage, use QUIET or TYPICAL and say so plainly.
-- Keep each summary under ~240 characters.
+- Keep each summary under ~${summaryMax} characters.
 
 Rows:
 ${rows}`;
+}
+
+/** @deprecated use buildPerTickerWebPrompt */
+export function buildWeekPerTickerWebPrompt(events, contextLine) {
+  return buildPerTickerWebPrompt(events, contextLine, "week_ahead", 300);
 }
 
 export function parsePerTickerWebJson(text) {
@@ -154,15 +169,27 @@ function trimTickerSummary(text, max = 240) {
   return `${t.slice(0, max - 1)}…`;
 }
 
-export async function fetchOpenAiWeekPerTickerWebNotes(events, options = {}) {
+export async function fetchOpenAiPerTickerWebNotes(events, options = {}) {
   const env = options.env ?? process.env;
   const apiKey = String(env.OPENAI_API_KEY ?? "").trim();
   if (!apiKey || !events.length) return {};
 
+  const promptMode = options.promptMode ?? "week_ahead";
+  const summaryMax =
+    typeof options.summaryMax === "number" && Number.isFinite(options.summaryMax)
+      ? options.summaryMax
+      : promptMode === "week_ahead"
+        ? 340
+        : 280;
+
   const weekStart = options.weekStart ?? "";
   const weekEnd = options.weekEnd ?? "";
+  const contextLine =
+    String(options.contextLine ?? "").trim() ||
+    `Week window ${weekStart}..${weekEnd}.`;
+
   const slice = events.slice(0, 12);
-  const prompt = buildWeekPerTickerWebPrompt(slice, `Week window ${weekStart}..${weekEnd}.`);
+  const prompt = buildPerTickerWebPrompt(slice, contextLine, promptMode, summaryMax);
 
   let rawText = "";
   if (webSearchEnabled(env)) {
@@ -199,10 +226,21 @@ export async function fetchOpenAiWeekPerTickerWebNotes(events, options = {}) {
     const spotlight = clampMediaSpotlight(row.media_spotlight ?? row.mediaSpotlight, ceiling);
     out[ev.symbol] = {
       media_spotlight: spotlight,
-      summary: trimTickerSummary(row.summary, 260)
+      summary: trimTickerSummary(row.summary, summaryMax)
     };
   }
   return out;
+}
+
+/** Week-ahead digest (richer per-ticker cap). */
+export async function fetchOpenAiWeekPerTickerWebNotes(events, options = {}) {
+  const weekStart = options.weekStart ?? "";
+  const weekEnd = options.weekEnd ?? "";
+  return fetchOpenAiPerTickerWebNotes(events, {
+    ...options,
+    promptMode: "week_ahead",
+    contextLine: options.contextLine ?? `Week window ${weekStart}..${weekEnd}.`
+  });
 }
 
 async function chatCompletionsFallbackJson({ apiKey, env, prompt }) {
@@ -221,7 +259,7 @@ async function chatCompletionsFallbackJson({ apiKey, env, prompt }) {
       body: JSON.stringify({
         model,
         temperature: 0.25,
-        max_tokens: 1400,
+        max_tokens: 2000,
         response_format: { type: "json_object" },
         messages: [
           {

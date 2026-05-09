@@ -10,12 +10,11 @@ import {
   wasAlertSent,
   writeAlertState
 } from "./lib/state.js";
-import { fetchOpenAiAttentionBlurb, fetchOpenAiWeekPerTickerWebNotes } from "./lib/openai-summary.js";
+import { fetchOpenAiPerTickerWebNotes, fetchOpenAiWeekPerTickerWebNotes } from "./lib/openai-summary.js";
 import {
   buildAlertMessage,
   buildPingMessage,
   buildWeekDigestMessage,
-  escapeHtml,
   sendTelegramMessage
 } from "./lib/telegram.js";
 
@@ -59,7 +58,7 @@ export async function main(argv) {
     const { weekEnd } = weekRangeMondayToSunday(weekStart);
     const events = selectWeekEvents(payload.events ?? [], weekStart, weekEnd);
     const webNotesBySymbol =
-      events.length > 0
+      events.length > 0 && !args.dryRun
         ? await fetchOpenAiWeekPerTickerWebNotes(events, {
             weekStart,
             weekEnd,
@@ -135,11 +134,26 @@ export async function main(argv) {
     events = hypeOnly;
   }
 
+  const contextLine =
+    type === "today"
+      ? `~1h before the US regular session; hype-tier IPO subset for ${targetDate}.`
+      : `Next US regular session; filtered IPO listings for ${targetDate}.`;
+
+  const webNotesBySymbol =
+    events.length > 0 && !args.dryRun
+      ? await fetchOpenAiPerTickerWebNotes(events, {
+          contextLine,
+          promptMode: "listing_session",
+          env: process.env
+        })
+      : {};
+
   let text = buildAlertMessage({
     type,
     targetDate,
     events,
-    siteUrl: process.env.IPO_RADAR_SITE_URL
+    siteUrl: process.env.IPO_RADAR_SITE_URL,
+    webNotesBySymbol
   });
 
   if (args.dryRun) {
@@ -156,15 +170,6 @@ export async function main(argv) {
   if (wasAlertSent(state, type, targetDate)) {
     console.log(`Alert ${type}:${targetDate} was already sent; skipping.`);
     process.exit(0);
-  }
-
-  const contextLine =
-    type === "today"
-      ? `~1h before the US regular session; hype-tier IPO subset for ${targetDate}.`
-      : `Next US regular session; filtered IPO listings for ${targetDate}.`;
-  const aiSkim = await fetchOpenAiAttentionBlurb(events, contextLine, { env: process.env });
-  if (aiSkim) {
-    text = `${text}\n\n<b>AI + web</b> (experimental): <i>${escapeHtml(aiSkim)}</i>`;
   }
 
   await sendTelegramMessage({

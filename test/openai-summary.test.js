@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   buildAttentionPrompt,
-  buildWeekPerTickerWebPrompt,
+  buildPerTickerWebPrompt,
   clampMediaSpotlight,
   extractResponsesOutputText,
   mediaSpotlightCeilingFromBuzz,
@@ -49,10 +49,12 @@ test("parsePerTickerWebJson accepts raw JSON", () => {
   assert.equal(rows[0].symbol, "ZZ");
 });
 
-test("buildWeekPerTickerWebPrompt includes spotlight_ceiling per row", () => {
-  const p = buildWeekPerTickerWebPrompt(
+test("buildPerTickerWebPrompt includes spotlight_ceiling per row", () => {
+  const p = buildPerTickerWebPrompt(
     [{ symbol: "CBRS", companyName: "Cerebras", ipoDate: "2026-05-14", buzzScore: 38, attentionBand: "low" }],
-    "Week test."
+    "Week test.",
+    "week_ahead",
+    300
   );
   assert.match(p, /spotlight_ceiling=ELEVATED/);
   assert.match(p, /CBRS/);

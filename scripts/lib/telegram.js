@@ -95,7 +95,8 @@ function formatWeekIpoDate(ymd) {
   }).format(new Date(Date.UTC(y, m - 1, d)));
 }
 
-export function buildAlertMessage({ type, targetDate, events, siteUrl }) {
+/** @param {Record<string, { media_spotlight: string, summary: string }>} webNotesBySymbol */
+export function buildAlertMessage({ type, targetDate, events, siteUrl, webNotesBySymbol = {} }) {
   const title =
     type === "today"
       ? `IPO Radar: ~1h to open — high-attention IPOs (${targetDate})`
@@ -106,6 +107,13 @@ export function buildAlertMessage({ type, targetDate, events, siteUrl }) {
   if (events.length === 0) {
     lines.push("No interesting IPOs matched the v1 filter.");
   } else {
+    const hasWeb = Object.keys(webNotesBySymbol).length > 0;
+    if (hasWeb) {
+      lines.push(
+        "<i>Web read (below each ticker) = fresh search snapshot for this session; spotlight is capped vs Buzz/100 above it.</i>",
+        ""
+      );
+    }
     for (const event of events) {
       const details = [
         event.exchange,
@@ -124,6 +132,12 @@ export function buildAlertMessage({ type, targetDate, events, siteUrl }) {
         ].filter(Boolean);
         lines.push(buzzBits.join(" — "));
         lines.push("<i>Heuristic only, not a performance forecast.</i>");
+      }
+      const sym = event.symbol || "";
+      const web = sym ? webNotesBySymbol[sym] : null;
+      if (web?.summary) {
+        const label = formatMediaSpotlightLabel(web.media_spotlight);
+        lines.push(`<i>Web: <b>${escapeHtml(label)}</b> — ${escapeHtml(web.summary)}</i>`);
       }
       lines.push("");
     }

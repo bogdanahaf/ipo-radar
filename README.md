@@ -66,8 +66,8 @@ For a manual **`week`** run, **`week_preview`** defaults to **on** in Actions: t
 | --- | --- | --- | --- | --- |
 | **`sync`** / **`none`** | yes | yes (if diff) | yes | no |
 | **`ping`** | **no** | no | yes | yes (connectivity ping) |
-| **`tomorrow`** | yes | yes (if diff) | yes | yes — **next session** digest (+ optional **AI + web** blurb) |
-| **`today`** | yes | yes (if diff) | yes | yes — **~1h pre-open**, **hype gate** (+ optional **AI + web** blurb; skipped if nothing hype-tier lists that day) |
+| **`tomorrow`** | yes | yes (if diff) | yes | yes — **next session** digest (+ optional **AI + web** per ticker) |
+| **`today`** | yes | yes (if diff) | yes | yes — **~1h pre-open**, **hype gate** (+ optional **AI + web** per ticker; skipped if nothing hype-tier lists that day) |
 | **`week`** | yes | yes (if diff) | yes | yes — **Mon–Sun** digest + optional **AI + web** lines **under each ticker** (if `OPENAI_API_KEY` is set) |
 | **`both`** | yes | yes (if diff) | yes | yes — runs **`today`** then **`tomorrow`** |
 
@@ -94,7 +94,7 @@ git push -u origin main
    - `ALPHAVANTAGE_API_KEY`
    - `TELEGRAM_BOT_TOKEN`
    - `TELEGRAM_CHAT_ID`
-   - optional `OPENAI_API_KEY` — if set, **today** / **tomorrow** append one short **AI + web** paragraph; **week** adds a **per-ticker** web line (spotlight labels are **capped** vs each row’s Buzz/100 so they cannot contradict the calendar tier). Not return forecasts or advice.
+   - optional `OPENAI_API_KEY` — if set, **week**, **today**, and **tomorrow** add **per-ticker** **AI + web** lines (week-ahead uses a slightly richer cap; listing-day alerts stress fresh wires). Spotlight labels are **capped** vs each row’s Buzz/100. Not return forecasts or advice.
 4. In GitHub, add repository variables:
    - `IPO_RADAR_SITE_URL`, for example `https://YOUR_USER.github.io/ipo-radar/`
    - optional `IPO_WATCHLIST`, comma-separated company keywords

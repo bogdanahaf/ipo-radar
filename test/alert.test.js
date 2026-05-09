@@ -61,6 +61,20 @@ test("buildAlertMessage includes ticker, site, and disclaimer", () => {
   assert.match(message, /Not financial or investment advice/);
 });
 
+test("buildAlertMessage interleaves listing-day web blurbs", () => {
+  const message = buildAlertMessage({
+    type: "tomorrow",
+    targetDate: "2026-05-12",
+    events: selectAlertEvents(events, "2026-05-11"),
+    siteUrl: "https://example.com/ipo-radar/",
+    webNotesBySymbol: {
+      FIG: { media_spotlight: "TYPICAL", summary: "No major new wires since Friday." }
+    }
+  });
+  assert.match(message, /Web read/);
+  assert.match(message, /No major new wires/);
+});
+
 test("buildWeekDigestMessage lists tickers and disclaimer", () => {
   const message = buildWeekDigestMessage({
     weekStart: "2026-05-11",
