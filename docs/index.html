@@ -6,7 +6,7 @@
     <title>IPO Radar</title>
     <meta
       name="description"
-      content="A lightweight IPO calendar for next-day and market-open Telegram alerts."
+      content="Free DIY IPO calendar: day-before and pre-open Telegram alerts, plus a static dashboard on GitHub Pages."
     >
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -15,11 +15,66 @@
       <div>
         <p class="eyebrow">IPO Radar</p>
         <h1>Upcoming IPO watchlist</h1>
+        <p class="lede">
+          A minimal, self-hosted radar: calendar on Pages, two Telegram beats aligned with how retail IPOs
+          actually show up on the tape (not allocation lotteries).
+        </p>
       </div>
       <div class="status" id="status">Loading data</div>
     </header>
 
     <main class="layout">
+      <section class="guide" aria-label="How this fits your workflow">
+        <div class="guide__intro">
+          <p class="eyebrow">Why this exists</p>
+          <h2 class="guide__title">Cheap alerts without a $29/month digest</h2>
+          <p class="guide__text">
+            Paid services bundle email, SMS, and “AI S-1” tiers. If your real need is simpler, a small
+            pipeline on GitHub Actions plus a Telegram channel gets you most of the calendar signal for
+            the cost of a free Alpha Vantage key and a bot token.
+          </p>
+        </div>
+        <div class="guide__grid">
+          <article class="guide-card">
+            <h3>What IPO Radar covers</h3>
+            <ul class="guide-list">
+              <li>
+                <strong>Next session preview</strong> — after the US close, a digest of filtered listings
+                for the next market day (your “know who is going public tomorrow” beat).
+              </li>
+              <li>
+                <strong>Pre-open ping</strong> — on listing day, about an hour before the US cash session
+                opens, a short reminder for the same filtered set.
+              </li>
+              <li>
+                <strong>Watchlist bias</strong> — set <code>IPO_WATCHLIST</code> in GitHub variables to
+                boost names you care about; everything still renders on this page for manual review.
+              </li>
+            </ul>
+          </article>
+          <article class="guide-card guide-card--muted">
+            <h3>What it does not cover</h3>
+            <ul class="guide-list">
+              <li>
+                <strong>Broker-specific “stages”</strong> — lines like “allocation window open” or “IPO
+                tonight after close” are workflow states inside Robinhood, SoFi, or other apps. They are
+                not in the public IPO calendar feed this project uses; keep those notifications inside
+                the broker if you still participate in allocations.
+              </li>
+              <li>
+                <strong>Schwab, IBKR, Robinhood hooks</strong> — no brokerage integration, no order flow,
+                no advice. Use each firm’s own alerts, watchlists, and corporate-action notices alongside
+                this calendar.
+              </li>
+            </ul>
+          </article>
+        </div>
+        <p class="guide__footnote">
+          Educational only. Data comes from Alpha Vantage’s IPO calendar; verify filings and symbols with
+          the exchange or SEC before you trade.
+        </p>
+      </section>
+
       <section class="metrics" aria-label="IPO counts">
         <div class="metric">
           <span class="metric__label">Visible</span>

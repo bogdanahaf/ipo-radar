@@ -117,4 +117,10 @@ Duplicate prevention is handled by `docs/data/alert-state.json`.
 - Nasdaq IPO Calendar: https://www.nasdaq.com/market-activity/ipos
 - Telegram Bot API: https://core.telegram.org/bots/api
 
+## Notes from common questions (not legal advice)
+
+- **Robinhood geography** — Robinhood’s US entity is primarily for US residents. The company has also rolled out UK-facing brokerage products (for example US-listed equities and related offerings for UK customers). Coverage in the rest of Europe is not uniform “Robinhood everywhere”; check Robinhood’s own country list and terms before assuming you can onboard or keep trading from a new address.
+- **Moving from the US to the EU while keeping US accounts** — Eligibility, tax reporting, and whether you may keep a US brokerage account after relocating depend on the broker, products, and your citizenship or residency status. A US bank relationship by itself does not guarantee you can keep every US brokerage workflow. Ask Schwab, Interactive Brokers, or any other firm directly and read their cross-border policies.
+- **Allocation windows** — Retail IPO access and “stage” notifications are broker-specific. This repo only mirrors public calendar-style data plus your own watchlist hints.
+
 Educational only. Not financial or investment advice.

@@ -57,6 +57,14 @@ h1 {
   line-height: 0.95;
 }
 
+.lede {
+  margin-top: 14px;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
 h2 {
   font-size: 1.15rem;
   font-weight: 720;
@@ -86,6 +94,86 @@ h2 {
 .layout {
   width: min(1180px, calc(100% - 32px));
   margin: 24px auto 40px;
+}
+
+.guide {
+  margin-bottom: 22px;
+  padding: 22px clamp(18px, 3vw, 26px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--surface-strong), var(--teal-soft));
+  box-shadow: var(--shadow);
+}
+
+.guide__intro {
+  margin-bottom: 18px;
+}
+
+.guide__title {
+  margin-top: 6px;
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+}
+
+.guide__text {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 72ch;
+}
+
+.guide__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.guide-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  background: var(--surface-strong);
+}
+
+.guide-card--muted {
+  background: var(--surface);
+}
+
+.guide-card h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-weight: 780;
+}
+
+.guide-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.guide-list li + li {
+  margin-top: 10px;
+}
+
+.guide-list strong {
+  color: var(--ink);
+}
+
+.guide-list code {
+  font-size: 0.84em;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #f0ebe2;
+  color: var(--ink);
+}
+
+.guide__footnote {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 .metrics {

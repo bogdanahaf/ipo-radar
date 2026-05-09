@@ -19,7 +19,6 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: "15 5,11,17,23 * * 1-5"
     - cron: "30 12,13 * * 1-5"
     - cron: "30 20,21 * * 1-5"
 
