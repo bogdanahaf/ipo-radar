@@ -64,9 +64,9 @@ All of this is the **IPO Radar** workflow unless noted. `dry_run` should be **fa
 | --- | --- | --- | --- | --- |
 | **`sync`** / **`none`** | yes | yes (if diff) | yes | no |
 | **`ping`** | **no** | no | yes | yes (connectivity ping) |
-| **`tomorrow`** | yes | yes (if diff) | yes | yes — **next session** digest (same idea as the weekday after-close job) |
-| **`today`** | yes | yes (if diff) | yes | yes — **~1h pre-open**, **hype gate** (skipped if nothing hype-tier lists that day) |
-| **`week`** | yes | yes (if diff) | yes | yes — **Mon–Sun** window digest (+ optional OpenAI skim if `OPENAI_API_KEY` is set) |
+| **`tomorrow`** | yes | yes (if diff) | yes | yes — **next session** digest (+ optional **AI + web** blurb) |
+| **`today`** | yes | yes (if diff) | yes | yes — **~1h pre-open**, **hype gate** (+ optional **AI + web** blurb; skipped if nothing hype-tier lists that day) |
+| **`week`** | yes | yes (if diff) | yes | yes — **Mon–Sun** window digest (+ optional **AI + web** blurb if `OPENAI_API_KEY` is set) |
 | **`both`** | yes | yes (if diff) | yes | yes — runs **`today`** then **`tomorrow`** |
 
 **The “full” operator loop you usually want**
@@ -92,12 +92,14 @@ git push -u origin main
    - `ALPHAVANTAGE_API_KEY`
    - `TELEGRAM_BOT_TOKEN`
    - `TELEGRAM_CHAT_ID`
-   - optional `OPENAI_API_KEY` — if set, the **Sunday week** Telegram digest appends a short **AI skim** (experimental; still not advice).
+   - optional `OPENAI_API_KEY` — if set, **today**, **tomorrow**, and **week** Telegram digests append one short **AI + web** paragraph (OpenAI Responses API with hosted web search when enabled; qualitative “attention / volatility” framing only — not return forecasts or advice).
 4. In GitHub, add repository variables:
    - `IPO_RADAR_SITE_URL`, for example `https://YOUR_USER.github.io/ipo-radar/`
    - optional `IPO_WATCHLIST`, comma-separated company keywords
    - optional `IPO_HYPE_THRESHOLD` (number, default `68` for the pre-open hype gate)
-   - optional `OPENAI_MODEL` (defaults to `gpt-4o-mini` when an OpenAI key is present)
+   - optional `OPENAI_MODEL` — Chat Completions fallback if web search is off or fails (default `gpt-4o-mini`)
+   - optional `OPENAI_RESPONSES_MODEL` — model for Responses + web search (default `gpt-4o`)
+   - optional `OPENAI_WEB_SEARCH` — set to `false` to disable hosted web search and use the fallback only
 5. In repository Settings -> Pages, set the source to GitHub Actions.
 6. Run the `IPO Radar` workflow manually once (default **`sync`** = data + Pages only).
 

@@ -10,7 +10,7 @@ import {
   wasAlertSent,
   writeAlertState
 } from "./lib/state.js";
-import { fetchOpenAiWeekSkim } from "./lib/openai-summary.js";
+import { fetchOpenAiAttentionBlurb, fetchOpenAiWeekSkim } from "./lib/openai-summary.js";
 import {
   buildAlertMessage,
   buildPingMessage,
@@ -78,7 +78,7 @@ export async function main(argv) {
 
     const aiSkim = events.length ? await fetchOpenAiWeekSkim(events, { weekStart, weekEnd, env: process.env }) : "";
     if (aiSkim) {
-      text = `${text}\n\n<b>AI skim</b> (experimental): <i>${escapeHtml(aiSkim)}</i>`;
+      text = `${text}\n\n<b>AI + web</b> (experimental): <i>${escapeHtml(aiSkim)}</i>`;
     }
 
     await sendTelegramMessage({
@@ -122,7 +122,7 @@ export async function main(argv) {
     events = hypeOnly;
   }
 
-  const text = buildAlertMessage({
+  let text = buildAlertMessage({
     type,
     targetDate,
     events,
@@ -143,6 +143,15 @@ export async function main(argv) {
   if (wasAlertSent(state, type, targetDate)) {
     console.log(`Alert ${type}:${targetDate} was already sent; skipping.`);
     process.exit(0);
+  }
+
+  const contextLine =
+    type === "today"
+      ? `~1h before the US regular session; hype-tier IPO subset for ${targetDate}.`
+      : `Next US regular session; filtered IPO listings for ${targetDate}.`;
+  const aiSkim = await fetchOpenAiAttentionBlurb(events, contextLine, { env: process.env });
+  if (aiSkim) {
+    text = `${text}\n\n<b>AI + web</b> (experimental): <i>${escapeHtml(aiSkim)}</i>`;
   }
 
   await sendTelegramMessage({

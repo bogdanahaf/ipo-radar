@@ -80,6 +80,10 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
           IPO_HYPE_THRESHOLD: ${{ vars.IPO_HYPE_THRESHOLD }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_RESPONSES_MODEL: ${{ vars.OPENAI_RESPONSES_MODEL }}
+          OPENAI_WEB_SEARCH: ${{ vars.OPENAI_WEB_SEARCH }}
 
       - name: Send scheduled next-day alert
         if: github.event_name == 'schedule' && github.event.schedule == '30 20,21 * * 1-5'
@@ -88,6 +92,10 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_RESPONSES_MODEL: ${{ vars.OPENAI_RESPONSES_MODEL }}
+          OPENAI_WEB_SEARCH: ${{ vars.OPENAI_WEB_SEARCH }}
 
       - name: Send Sunday week digest
         if: github.event_name == 'schedule' && github.event.schedule == '0 21 * * 0'
@@ -98,6 +106,8 @@ jobs:
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_RESPONSES_MODEL: ${{ vars.OPENAI_RESPONSES_MODEL }}
+          OPENAI_WEB_SEARCH: ${{ vars.OPENAI_WEB_SEARCH }}
 
       - name: Require Telegram secrets for manual alerts
         if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none' && inputs.alert_type != 'sync'
@@ -166,6 +176,8 @@ jobs:
           IPO_HYPE_THRESHOLD: ${{ vars.IPO_HYPE_THRESHOLD }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_RESPONSES_MODEL: ${{ vars.OPENAI_RESPONSES_MODEL }}
+          OPENAI_WEB_SEARCH: ${{ vars.OPENAI_WEB_SEARCH }}
 
       - name: Commit updated data and alert state
         if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
