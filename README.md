@@ -51,6 +51,7 @@ npm run alert -- --type tomorrow
 ### Verify Telegram (first message)
 
 - **GitHub:** Actions → **IPO Radar** → Run workflow → `alert_type: ping`, `dry_run: false`. This posts a short “connected” message even when the calendar is empty. It does **not** touch `alert-state.json` dedupe keys for `today` / `tomorrow`.
+- **Ping skips the Alpha Vantage refresh** so you can prove Telegram wiring even if `ALPHAVANTAGE_API_KEY` is missing or rate-limited. Full runs still require the key for `npm run refresh`.
 - **Local:** `npm run alert:ping` with the same `TELEGRAM_*` and `IPO_RADAR_SITE_URL` env vars.
 
 Scheduled runs still send **tomorrow’s list after the close** and **today’s list about an hour before the US open** (see cron times below). There is no separate “full day” digest unless you add another cron or run the workflow manually.
@@ -135,5 +136,11 @@ Duplicate prevention is handled by `docs/data/alert-state.json`.
 - **Robinhood geography** — Robinhood’s US entity is primarily for US residents. The company has also rolled out UK-facing brokerage products (for example US-listed equities and related offerings for UK customers). Coverage in the rest of Europe is not uniform “Robinhood everywhere”; check Robinhood’s own country list and terms before assuming you can onboard or keep trading from a new address.
 - **Moving from the US to the EU while keeping US accounts** — Eligibility, tax reporting, and whether you may keep a US brokerage account after relocating depend on the broker, products, and your citizenship or residency status. A US bank relationship by itself does not guarantee you can keep every US brokerage workflow. Ask Schwab, Interactive Brokers, or any other firm directly and read their cross-border policies.
 - **Allocation windows** — Retail IPO access and “stage” notifications are broker-specific. This repo only mirrors public calendar-style data plus your own watchlist hints.
+
+## Troubleshooting Actions (exit code 1)
+
+- **Alpha Vantage:** `Missing ALPHAVANTAGE_API_KEY` or rate-limit text means the secret is empty or the free tier quota was hit. Wait and re-run, or use `alert_type: ping` to test Telegram only.
+- **Git push from Actions fails:** In the repo, **Settings → Actions → General → Workflow permissions**, enable **Read and write permissions** for the `GITHUB_TOKEN` so the workflow can commit `docs/data/*.json` updates to `main`.
+- **Node deprecation warnings:** The workflow pins **Node 24** and uses current `actions/checkout` / `actions/setup-node` majors, plus `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` for remaining JavaScript actions until GitHub defaults to Node 24 everywhere.
 
 Educational only. Not financial or investment advice.

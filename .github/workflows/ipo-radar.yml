@@ -35,18 +35,21 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      # Keeps older JavaScript actions (Pages, artifacts) on a supported runtime; see GitHub Actions changelog.
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - name: Install
@@ -55,7 +58,9 @@ jobs:
       - name: Test
         run: npm test
 
+      # Ping-only manual runs skip Alpha Vantage so Telegram can be tested without a key or when the API is rate-limited.
       - name: Refresh IPO data
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.alert_type == 'ping') }}
         run: npm run refresh
         env:
           ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
