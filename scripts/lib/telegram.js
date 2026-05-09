@@ -20,7 +20,19 @@ export function buildPingMessage({ siteUrl }) {
   return trimTelegramMessage(lines.join("\n"));
 }
 
-export function buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl }) {
+const MEDIA_SPOTLIGHT_DISPLAY = {
+  VERY_ELEVATED: "Very high outlet heat",
+  ELEVATED: "Elevated outlet heat",
+  TYPICAL: "Typical coverage",
+  QUIET: "Quiet coverage"
+};
+
+export function formatMediaSpotlightLabel(key) {
+  return MEDIA_SPOTLIGHT_DISPLAY[key] ?? key;
+}
+
+/** @param {Record<string, { media_spotlight: string, summary: string }>} webNotesBySymbol */
+export function buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl, webNotesBySymbol = {} }) {
   const lines = [
     `<b>IPO Radar: week ahead (${escapeHtml(weekStart)} → ${escapeHtml(weekEnd)})</b>`,
     "",
@@ -31,6 +43,13 @@ export function buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl }) 
   if (events.length === 0) {
     lines.push("No filtered IPOs land in this Mon–Sun window.");
   } else {
+    const hasWeb = Object.keys(webNotesBySymbol).length > 0;
+    if (hasWeb) {
+      lines.push(
+        "<i>Web read (below each ticker) = fresh outlet interest from search; spotlight is capped so it cannot overshoot the Buzz/100 line above it.</i>",
+        ""
+      );
+    }
     for (const event of events) {
       lines.push(
         `<b>${escapeHtml(event.symbol || "TBD")}</b> · ${escapeHtml(formatWeekIpoDate(event.ipoDate))} · ${escapeHtml(
@@ -45,6 +64,12 @@ export function buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl }) 
           event.buzzReasons?.length ? escapeHtml(event.buzzReasons.slice(0, 3).join("; ")) : ""
         ].filter(Boolean);
         lines.push(buzzLine.join(" — "));
+      }
+      const sym = event.symbol || "";
+      const web = sym ? webNotesBySymbol[sym] : null;
+      if (web?.summary) {
+        const label = formatMediaSpotlightLabel(web.media_spotlight);
+        lines.push(`<i>Web: <b>${escapeHtml(label)}</b> — ${escapeHtml(web.summary)}</i>`);
       }
       lines.push("");
     }

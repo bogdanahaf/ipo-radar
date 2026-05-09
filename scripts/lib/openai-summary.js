@@ -1,7 +1,7 @@
 /**
  * Optional OpenAI blurbs for Telegram digests.
  * Uses the Responses API + hosted web_search when enabled; otherwise a light Chat Completions fallback.
- * Outputs qualitative "attention / volatility-risk bucket" language only — not return forecasts or fake probabilities.
+ * Week digests use structured per-ticker JSON (web outlet heat, capped vs calendar Buzz). Today/tomorrow use a short paragraph.
  */
 
 export function pickTopBuzzEvents(events, limit = 8) {
@@ -71,6 +71,183 @@ export function webSearchEnabled(env = process.env) {
 export function responsesModelFromEnv(env = process.env) {
   const m = String(env.OPENAI_RESPONSES_MODEL ?? "").trim();
   return m || "gpt-4o";
+}
+
+/** Monotonic media-spotlight labels (web outlet heat), capped vs calendar Buzz. */
+export const MEDIA_SPOTLIGHT_LEVELS = ["QUIET", "TYPICAL", "ELEVATED", "VERY_ELEVATED"];
+
+export function mediaSpotlightCeilingFromBuzz(event) {
+  const buzz = Number(event.buzzScore ?? 0);
+  const band = String(event.attentionBand || "").toLowerCase();
+  if (band === "high" || buzz >= 55) return "VERY_ELEVATED";
+  if (band === "medium" || buzz >= 32) return "ELEVATED";
+  if (buzz >= 18) return "TYPICAL";
+  return "QUIET";
+}
+
+export function normalizeMediaSpotlight(raw) {
+  const u = String(raw ?? "")
+    .trim()
+    .toUpperCase()
+    .replace(/\s+/g, "_");
+  return MEDIA_SPOTLIGHT_LEVELS.includes(u) ? u : "TYPICAL";
+}
+
+export function clampMediaSpotlight(value, ceiling) {
+  const v = normalizeMediaSpotlight(value);
+  const c = normalizeMediaSpotlight(ceiling);
+  const vi = MEDIA_SPOTLIGHT_LEVELS.indexOf(v);
+  const ci = MEDIA_SPOTLIGHT_LEVELS.indexOf(c);
+  if (ci < 0) return v;
+  if (vi < 0) return "TYPICAL";
+  return MEDIA_SPOTLIGHT_LEVELS[Math.min(vi, ci)];
+}
+
+export function buildWeekPerTickerWebPrompt(events, contextLine) {
+  const rows = events
+    .map((e) => {
+      const ceiling = mediaSpotlightCeilingFromBuzz(e);
+      return `${e.symbol ?? "TBD"} — ${e.companyName ?? ""} (IPO ${e.ipoDate ?? "?"}; Buzz ${e.buzzScore ?? "n/a"}/100, band ${
+        e.attentionBand ?? "n/a"
+      }); spotlight_ceiling=${ceiling}`;
+    })
+    .join("\n");
+
+  return `${contextLine}
+
+Filtered US IPO list (order matters). For EACH row use web_search as needed.
+
+Return ONLY valid JSON (no markdown code fences, no commentary before or after) with this exact shape:
+{"tickers":[{"symbol":"STRING","media_spotlight":"QUIET|TYPICAL|ELEVATED|VERY_ELEVATED","summary":"one or two tight English sentences; no buy/sell; no numeric % return forecasts; cite outlets as plain names (Reuters), not URLs"}]}
+
+Rules:
+- Include exactly one ticker object per row below, in the SAME ORDER, same symbols.
+- media_spotlight MUST NOT exceed that row's spotlight_ceiling (QUIET ≤ TYPICAL ≤ ELEVATED ≤ VERY_ELEVATED).
+- If search finds little reputable coverage, use QUIET or TYPICAL and say so plainly.
+- Keep each summary under ~240 characters.
+
+Rows:
+${rows}`;
+}
+
+export function parsePerTickerWebJson(text) {
+  let cleaned = String(text ?? "").trim();
+  const fence = cleaned.match(/^```(?:json)?\s*([\s\S]*?)```$/im);
+  if (fence) cleaned = fence[1].trim();
+
+  const start = cleaned.indexOf("{");
+  const end = cleaned.lastIndexOf("}");
+  if (start >= 0 && end > start) cleaned = cleaned.slice(start, end + 1);
+
+  try {
+    const data = JSON.parse(cleaned);
+    if (!data || !Array.isArray(data.tickers)) return null;
+    return data.tickers;
+  } catch {
+    return null;
+  }
+}
+
+function trimTickerSummary(text, max = 240) {
+  const t = collapseWhitespace(flattenMarkdownLinks(String(text ?? "")));
+  if (t.length <= max) return t;
+  return `${t.slice(0, max - 1)}…`;
+}
+
+export async function fetchOpenAiWeekPerTickerWebNotes(events, options = {}) {
+  const env = options.env ?? process.env;
+  const apiKey = String(env.OPENAI_API_KEY ?? "").trim();
+  if (!apiKey || !events.length) return {};
+
+  const weekStart = options.weekStart ?? "";
+  const weekEnd = options.weekEnd ?? "";
+  const slice = events.slice(0, 12);
+  const prompt = buildWeekPerTickerWebPrompt(slice, `Week window ${weekStart}..${weekEnd}.`);
+
+  let rawText = "";
+  if (webSearchEnabled(env)) {
+    rawText = await callResponsesWithWebSearch({
+      apiKey,
+      model: responsesModelFromEnv(env),
+      input: prompt,
+      timeoutMs: 120_000
+    });
+  }
+  if (!rawText) {
+    rawText = await chatCompletionsFallbackJson({ apiKey, env, prompt });
+  }
+
+  const rows = parsePerTickerWebJson(rawText);
+  if (!rows?.length) return {};
+
+  const bySymbol = new Map();
+  for (const row of rows) {
+    const sym = String(row?.symbol ?? "")
+      .trim()
+      .toUpperCase();
+    if (sym) bySymbol.set(sym, row);
+  }
+
+  const out = {};
+  for (const ev of slice) {
+    const symKey = String(ev.symbol ?? "")
+      .trim()
+      .toUpperCase();
+    const row = bySymbol.get(symKey);
+    if (!row?.summary) continue;
+    const ceiling = mediaSpotlightCeilingFromBuzz(ev);
+    const spotlight = clampMediaSpotlight(row.media_spotlight ?? row.mediaSpotlight, ceiling);
+    out[ev.symbol] = {
+      media_spotlight: spotlight,
+      summary: trimTickerSummary(row.summary, 260)
+    };
+  }
+  return out;
+}
+
+async function chatCompletionsFallbackJson({ apiKey, env, prompt }) {
+  const model = String(env.OPENAI_MODEL ?? "").trim() || "gpt-4o-mini";
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 45_000);
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      signal: controller.signal,
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0.25,
+        max_tokens: 1400,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content:
+              "You return only compact JSON for IPO ticker web blurbs. No live web: infer cautiously from prompt rows. Never investment advice."
+          },
+          { role: "user", content: prompt }
+        ]
+      })
+    });
+
+    const body = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      console.warn(`OpenAI chat JSON fallback HTTP ${response.status} ${JSON.stringify(body).slice(0, 200)}`);
+      return "";
+    }
+
+    const text = body.choices?.[0]?.message?.content?.trim();
+    return text ? flattenMarkdownLinks(text) : "";
+  } catch (error) {
+    console.warn(`OpenAI chat JSON fallback failed: ${error.message}`);
+    return "";
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 export async function fetchOpenAiAttentionBlurb(events, contextLine, options = {}) {

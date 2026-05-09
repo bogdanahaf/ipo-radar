@@ -84,6 +84,32 @@ test("buildWeekDigestMessage lists tickers and disclaimer", () => {
   assert.match(message, /Not financial or investment advice/);
 });
 
+test("buildWeekDigestMessage interleaves per-ticker web blurbs", () => {
+  const message = buildWeekDigestMessage({
+    weekStart: "2026-05-11",
+    weekEnd: "2026-05-17",
+    events: [
+      {
+        symbol: "FIG",
+        companyName: "Future Figma Systems Inc",
+        ipoDate: "2026-05-11",
+        exchange: "NASDAQ",
+        priceRange: "$22 - $25",
+        buzzScore: 72,
+        attentionBand: "high",
+        buzzReasons: ["watchlist: figma"]
+      }
+    ],
+    siteUrl: "https://example.com/ipo-radar/",
+    webNotesBySymbol: {
+      FIG: { media_spotlight: "ELEVATED", summary: "Several tech outlets mentioned the filing." }
+    }
+  });
+  assert.match(message, /Web read/);
+  assert.match(message, /Several tech outlets/);
+  assert.match(message, /FIG[\s\S]*Several tech outlets/);
+});
+
 test("buildPingMessage includes dashboard link and disclaimer", () => {
   const message = buildPingMessage({ siteUrl: "https://example.com/ipo-radar/" });
   assert.match(message, /Telegram is connected/);

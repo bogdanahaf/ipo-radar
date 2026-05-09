@@ -2,7 +2,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   buildAttentionPrompt,
+  buildWeekPerTickerWebPrompt,
+  clampMediaSpotlight,
   extractResponsesOutputText,
+  mediaSpotlightCeilingFromBuzz,
+  parsePerTickerWebJson,
   pickTopBuzzEvents
 } from "../scripts/lib/openai-summary.js";
 
@@ -25,6 +29,33 @@ test("buildAttentionPrompt lists tickers and constraints", () => {
   );
   assert.match(prompt, /ZZ/);
   assert.match(prompt, /VERY_ELEVATED/);
+});
+
+test("mediaSpotlightCeilingFromBuzz caps low calendar buzz", () => {
+  assert.equal(mediaSpotlightCeilingFromBuzz({ buzzScore: 38, attentionBand: "low" }), "ELEVATED");
+  assert.equal(mediaSpotlightCeilingFromBuzz({ buzzScore: 72, attentionBand: "high" }), "VERY_ELEVATED");
+});
+
+test("clampMediaSpotlight never exceeds ceiling", () => {
+  assert.equal(clampMediaSpotlight("VERY_ELEVATED", "ELEVATED"), "ELEVATED");
+  assert.equal(clampMediaSpotlight("QUIET", "ELEVATED"), "QUIET");
+});
+
+test("parsePerTickerWebJson accepts raw JSON", () => {
+  const rows = parsePerTickerWebJson(
+    '{"tickers":[{"symbol":"ZZ","media_spotlight":"TYPICAL","summary":"Hello"}]}'
+  );
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].symbol, "ZZ");
+});
+
+test("buildWeekPerTickerWebPrompt includes spotlight_ceiling per row", () => {
+  const p = buildWeekPerTickerWebPrompt(
+    [{ symbol: "CBRS", companyName: "Cerebras", ipoDate: "2026-05-14", buzzScore: 38, attentionBand: "low" }],
+    "Week test."
+  );
+  assert.match(p, /spotlight_ceiling=ELEVATED/);
+  assert.match(p, /CBRS/);
 });
 
 test("extractResponsesOutputText reads assistant output_text", () => {
