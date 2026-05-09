@@ -190,7 +190,24 @@ jobs:
             echo "No data changes to commit."
           else
             git commit -m "Update IPO Radar data"
-            git push
+            branch="${GITHUB_REF_NAME:-main}"
+            pushed=0
+            for attempt in 1 2 3 4 5 6; do
+              if git push; then
+                pushed=1
+                break
+              fi
+              echo "Push rejected or failed (attempt ${attempt}); rebasing onto origin/${branch} and retrying..."
+              git fetch origin "${branch}"
+              git rebase "origin/${branch}" || {
+                echo "::error::Rebase onto origin/${branch} failed (likely a conflict on data files). Resolve on main manually."
+                exit 1
+              }
+            done
+            if [ "${pushed}" != "1" ]; then
+              echo "::error::git push failed after retries."
+              exit 1
+            fi
           fi
 
       - name: Configure Pages
