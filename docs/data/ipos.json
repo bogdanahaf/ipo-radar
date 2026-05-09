@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-09T21:03:11.452Z",
+  "generatedAt": "2026-05-09T22:01:42.985Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,12 @@
         "major exchange: NYSE",
         "price range: $6 - $7"
       ],
-      "updatedAt": "2026-05-09T21:03:11.452Z"
+      "updatedAt": "2026-05-09T22:01:42.985Z",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
     },
     {
       "symbol": "FRVO",
@@ -38,7 +43,13 @@
         "major exchange: NASDAQ",
         "price range: $21 - $24"
       ],
-      "updatedAt": "2026-05-09T21:03:11.452Z"
+      "updatedAt": "2026-05-09T22:01:42.985Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
     },
     {
       "symbol": "GMRS",
@@ -53,7 +64,13 @@
         "major exchange: NYSE",
         "price range: $22 - $25"
       ],
-      "updatedAt": "2026-05-09T21:03:11.452Z"
+      "updatedAt": "2026-05-09T22:01:42.985Z",
+      "buzzScore": 34,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
     },
     {
       "symbol": "BXDC",
@@ -68,7 +85,13 @@
         "major exchange: NYSE",
         "price range: $20"
       ],
-      "updatedAt": "2026-05-09T21:03:11.452Z"
+      "updatedAt": "2026-05-09T22:01:42.985Z",
+      "buzzScore": 28,
+      "buzzReasons": [
+        "major listing venue",
+        "mid price band"
+      ],
+      "attentionBand": "low"
     },
     {
       "symbol": "CBRS",
@@ -83,7 +106,13 @@
         "major exchange: NASDAQ",
         "price range: $115 - $125"
       ],
-      "updatedAt": "2026-05-09T21:03:11.452Z"
+      "updatedAt": "2026-05-09T22:01:42.985Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
     },
     {
       "symbol": "RIKU",
@@ -98,7 +127,12 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-09T21:03:11.452Z"
+      "updatedAt": "2026-05-09T22:01:42.985Z",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
     }
   ]
 }
