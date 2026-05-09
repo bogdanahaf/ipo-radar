@@ -10,7 +10,14 @@ import {
   wasAlertSent,
   writeAlertState
 } from "./lib/state.js";
-import { buildAlertMessage, buildPingMessage, buildWeekDigestMessage, sendTelegramMessage } from "./lib/telegram.js";
+import { fetchOpenAiWeekSkim } from "./lib/openai-summary.js";
+import {
+  buildAlertMessage,
+  buildPingMessage,
+  buildWeekDigestMessage,
+  escapeHtml,
+  sendTelegramMessage
+} from "./lib/telegram.js";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -51,7 +58,7 @@ export async function main(argv) {
     const weekStart = args.weekStart ?? upcomingCalendarWeekMonday(today);
     const { weekEnd } = weekRangeMondayToSunday(weekStart);
     const events = selectWeekEvents(payload.events ?? [], weekStart, weekEnd);
-    const text = buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl: process.env.IPO_RADAR_SITE_URL });
+    let text = buildWeekDigestMessage({ weekStart, weekEnd, events, siteUrl: process.env.IPO_RADAR_SITE_URL });
 
     if (args.dryRun) {
       console.log(text);
@@ -67,6 +74,11 @@ export async function main(argv) {
     if (wasAlertSent(state, "week", weekStart)) {
       console.log(`Week digest for ${weekStart} was already sent; skipping.`);
       process.exit(0);
+    }
+
+    const aiSkim = events.length ? await fetchOpenAiWeekSkim(events, { weekStart, weekEnd, env: process.env }) : "";
+    if (aiSkim) {
+      text = `${text}\n\n<b>AI skim</b> (experimental): <i>${escapeHtml(aiSkim)}</i>`;
     }
 
     await sendTelegramMessage({

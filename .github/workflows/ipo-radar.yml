@@ -92,6 +92,8 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
 
       - name: Require Telegram secrets for manual alerts
         if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
@@ -155,6 +157,8 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
           IPO_HYPE_THRESHOLD: ${{ vars.IPO_HYPE_THRESHOLD }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
 
       - name: Commit updated data and alert state
         if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false

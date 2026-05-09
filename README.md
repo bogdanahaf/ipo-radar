@@ -72,10 +72,12 @@ git push -u origin main
    - `ALPHAVANTAGE_API_KEY`
    - `TELEGRAM_BOT_TOKEN`
    - `TELEGRAM_CHAT_ID`
+   - optional `OPENAI_API_KEY` — if set, the **Sunday week** Telegram digest appends a short **AI skim** (experimental; still not advice).
 4. In GitHub, add repository variables:
    - `IPO_RADAR_SITE_URL`, for example `https://YOUR_USER.github.io/ipo-radar/`
    - optional `IPO_WATCHLIST`, comma-separated company keywords
    - optional `IPO_HYPE_THRESHOLD` (number, default `68` for the pre-open hype gate)
+   - optional `OPENAI_MODEL` (defaults to `gpt-4o-mini` when an OpenAI key is present)
 5. In repository Settings -> Pages, set the source to GitHub Actions.
 6. Run the `IPO Radar` workflow manually once.
 
@@ -127,6 +129,26 @@ Cron times are UTC (duplicate morning slots stay DST-safe):
 - **Sunday week digest:** `0 21` — `week` (upcoming Mon–Sun window in America/New_York calendar dates).
 
 Duplicate prevention is handled by `docs/data/alert-state.json`.
+
+## Analytics for the public Pages site
+
+GitHub Pages is static HTML — there is no built-in visitor analytics. Common minimal options:
+
+- **GitHub traffic** — repo **Insights → Traffic** for referrers/views (coarse, repo-level only).
+- **Privacy-friendly embed** — self-host **[Umami](https://umami.is/)** or use **[Plausible](https://plausible.io/)** and paste their one-line script into `docs/index.html` if you accept a third-party beacon.
+- **None** — the default build ships **no** trackers.
+
+## Repository hygiene (secrets in git history)
+
+Never commit API keys or bot tokens. To audit an existing clone:
+
+```bash
+git rev-list --all | wc -l
+git grep -n "sk-[a-zA-Z0-9]\\{20,\\}" $(git rev-list --all)
+git grep -n "ghp_[A-Za-z0-9]\\{20,\\}" $(git rev-list --all)
+```
+
+If a real secret ever lands in a commit, **rotate the credential** and rewrite history (for example `git filter-repo`) or treat the repo as compromised.
 
 ## Sources
 

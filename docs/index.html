@@ -4,32 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IPO Radar</title>
-    <meta name="description" content="IPO calendar and buzz heuristics (not investment advice).">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="header">
-      <div>
-        <h1>IPO Radar</h1>
-        <p class="meta" id="meta">Loading…</p>
-      </div>
+      <h1>IPO Radar</h1>
+      <p class="meta" id="meta">…</p>
     </header>
-
-    <main class="main">
-      <p class="hint">
-        Buzz = narrative sorting only. Telegram: Sunday week digest, weekday after-close next day, pre-open
-        only when a hype-tier name lists that session.
-      </p>
-      <section class="list-wrap" aria-label="Upcoming IPOs">
-        <div class="list" id="list"></div>
-      </section>
+    <main>
+      <div class="list" id="list"></div>
     </main>
-
-    <footer class="footer">
-      <a href="https://www.alphavantage.co/documentation/#ipo-calendar">Data: Alpha Vantage</a>
-      · Educational only, not advice.
-    </footer>
-
+    <footer class="footer">Not advice.</footer>
     <script type="module" src="app.js"></script>
   </body>
 </html>

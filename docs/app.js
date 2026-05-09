@@ -8,121 +8,85 @@ load();
 async function load() {
   try {
     const response = await fetch(`data/ipos.json?ts=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const payload = await response.json();
-    render(payload);
+    if (!response.ok) throw new Error(String(response.status));
+    render(await response.json());
   } catch (error) {
-    meta.textContent = "Data unavailable";
+    meta.textContent = "unavailable";
     list.innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
   }
 }
 
 function render(payload) {
-  const events = payload.events ?? [];
-  const visible = events.filter((event) => !event.hiddenReason);
-  const hidden = events.filter((event) => event.hiddenReason);
+  const visible = (payload.events ?? []).filter((e) => !e.hiddenReason);
+  const hidden = (payload.events ?? []).filter((e) => e.hiddenReason);
   const today = ymdInTimeZone(new Date());
-
-  const updated = payload.generatedAt ? formatShortTime(payload.generatedAt) : "never";
-  meta.textContent = `${visible.length} listings · ${hidden.length} filtered · updated ${updated}`;
+  const updated = payload.generatedAt ? shortTime(payload.generatedAt) : "—";
+  meta.textContent = `${visible.length} · ${hidden.length} hidden · ${updated}`;
 
   const sorted = [...visible].sort(
     (a, b) => (a.ipoDate || "").localeCompare(b.ipoDate || "") || (Number(b.buzzScore ?? 0) - Number(a.buzzScore ?? 0))
   );
 
   if (!sorted.length) {
-    list.innerHTML = `<div class="empty">No visible rows yet.</div>`;
+    list.innerHTML = `<div class="empty">empty</div>`;
     return;
   }
 
-  const groups = groupByDate(sorted);
-  const html = groups
-    .map(
-      ({ date, rows }) => `
-      <div class="group">${escapeHtml(formatGroupLabel(date, today))}</div>
-      ${rows.map((row) => renderRow(row)).join("")}`
-    )
-    .join("");
-  list.innerHTML = html;
-}
-
-function groupByDate(rows) {
-  const map = new Map();
-  for (const row of rows) {
-    const date = row.ipoDate || "TBD";
-    if (!map.has(date)) map.set(date, []);
-    map.get(date).push(row);
+  const groups = new Map();
+  for (const row of sorted) {
+    const d = row.ipoDate || "—";
+    if (!groups.has(d)) groups.set(d, []);
+    groups.get(d).push(row);
   }
-  return [...map.entries()].map(([date, rows]) => ({ date, rows }));
+
+  list.innerHTML = [...groups.entries()]
+    .map(([date, rows]) => {
+      const label = date === today ? `${fmt(date)} · today` : fmt(date);
+      return `<div class="group">${escapeHtml(label)}</div>${rows.map(rowLine).join("")}`;
+    })
+    .join("");
 }
 
-function formatGroupLabel(ymd, todayYmd) {
-  if (!ymd || ymd === "TBD") return "Date TBD";
-  if (ymd === todayYmd) return `${formatDate(ymd)} · today`;
-  return formatDate(ymd);
-}
-
-function renderRow(event) {
-  const buzzClass =
-    event.attentionBand === "high"
-      ? "tag--buzz-high"
-      : event.attentionBand === "medium"
-        ? "tag--buzz-medium"
-        : event.attentionBand === "low"
-          ? "tag--buzz-low"
-          : "";
-
-  const buzzTag =
-    event.buzzScore != null && event.attentionBand
-      ? `<span class="tag ${buzzClass}">Buzz ${escapeHtml(String(event.buzzScore))} · ${escapeHtml(
-          event.attentionBand
+function rowLine(event) {
+  const b = event.attentionBand;
+  const buzz =
+    event.buzzScore != null && b
+      ? `<span class="tag ${b === "high" ? "tag--b" : b === "medium" ? "tag--m" : "tag--l"}">${escapeHtml(
+          String(event.buzzScore)
         )}</span>`
       : "";
-
-  const buzzNote =
-    event.buzzReasons?.length && !event.hiddenReason
-      ? `<p class="buzz-line">${escapeHtml(event.buzzReasons.slice(0, 3).join(" · "))}</p>`
-      : "";
-
-  return `
-    <div class="row">
-      <div class="row__left">
-        <div class="sym">${escapeHtml(event.symbol || "—")}</div>
-        <div class="name">${escapeHtml(event.companyName || "")}</div>
-        <div class="row__meta">
-          ${event.exchange ? `<span class="tag">${escapeHtml(event.exchange)}</span>` : ""}
-          ${event.priceRange ? `<span class="tag tag--price">${escapeHtml(event.priceRange)}</span>` : ""}
-          ${buzzTag}
-        </div>
-        ${buzzNote}
+  return `<div class="row">
+    <div class="sym">${escapeHtml(event.symbol || "—")}</div>
+    <div class="body">
+      <div class="name">${escapeHtml(event.companyName || "")}</div>
+      <div class="tags">
+        ${event.exchange ? `<span class="tag">${escapeHtml(event.exchange)}</span>` : ""}
+        ${event.priceRange ? `<span class="tag">${escapeHtml(event.priceRange)}</span>` : ""}
+        ${buzz}
       </div>
-      <div class="right">${event.score != null ? escapeHtml(String(event.score)) : ""}</div>
     </div>
-  `;
+  </div>`;
 }
 
 function ymdInTimeZone(date) {
-  const parts = new Intl.DateTimeFormat("en-US", {
+  const p = new Intl.DateTimeFormat("en-US", {
     timeZone: MARKET_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit"
   }).formatToParts(date);
-  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return `${values.year}-${values.month}-${values.day}`;
+  const v = Object.fromEntries(p.map((x) => [x.type, x.value]));
+  return `${v.year}-${v.month}-${v.day}`;
 }
 
-function formatDate(ymd) {
-  const [year, month, day] = ymd.split("-").map(Number);
-  return new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC"
-  }).format(new Date(Date.UTC(year, month - 1, day)));
+function fmt(ymd) {
+  const [y, m, d] = ymd.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" }).format(
+    new Date(Date.UTC(y, m - 1, d))
+  );
 }
 
-function formatShortTime(value) {
+function shortTime(value) {
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
