@@ -86,7 +86,12 @@ export async function sendTelegramMessage({ token, chatId, text, dryRun = false 
 
   const body = await response.json().catch(() => ({}));
   if (!response.ok || body.ok === false) {
-    throw new Error(`Telegram sendMessage failed: ${response.status} ${JSON.stringify(body)}`);
+    const hint = String(body.description ?? "")
+      .toLowerCase()
+      .includes("chat not found")
+      ? " For channels: set TELEGRAM_CHAT_ID to @YourChannel (public) or the numeric supergroup id (often -100…); add the bot as a channel admin with Post Messages."
+      : "";
+    throw new Error(`Telegram sendMessage failed: ${response.status} ${JSON.stringify(body)}.${hint}`);
   }
 
   return body;
