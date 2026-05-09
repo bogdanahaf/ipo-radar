@@ -63,21 +63,34 @@ export function buildAlertMessage({ type, targetDate, events, siteUrl }) {
   return trimTelegramMessage(lines.join("\n"));
 }
 
+export function normalizeTelegramChatId(raw) {
+  let id = String(raw ?? "").trim();
+  if (!id) return "";
+  const tme = id.match(/(?:https?:\/\/)?t\.me\/([A-Za-z0-9_]+)/i);
+  if (tme && !id.startsWith("@") && !/^-?\d+$/.test(id)) {
+    id = `@${tme[1]}`;
+  }
+  return id;
+}
+
 export async function sendTelegramMessage({ token, chatId, text, dryRun = false }) {
   if (dryRun) {
     return { ok: true, dryRun: true, text };
   }
 
-  if (!token) throw new Error("Missing TELEGRAM_BOT_TOKEN.");
-  if (!chatId) throw new Error("Missing TELEGRAM_CHAT_ID.");
+  const cleanToken = String(token ?? "").trim();
+  const cleanChatId = normalizeTelegramChatId(chatId);
 
-  const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+  if (!cleanToken) throw new Error("Missing TELEGRAM_BOT_TOKEN.");
+  if (!cleanChatId) throw new Error("Missing TELEGRAM_CHAT_ID.");
+
+  const response = await fetch(`https://api.telegram.org/bot${cleanToken}/sendMessage`, {
     method: "POST",
     headers: {
       "content-type": "application/json"
     },
     body: JSON.stringify({
-      chat_id: chatId,
+      chat_id: cleanChatId,
       text,
       parse_mode: "HTML",
       disable_web_page_preview: true

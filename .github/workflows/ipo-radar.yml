@@ -82,6 +82,21 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
 
+      - name: Require Telegram secrets for manual alerts
+        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::error::TELEGRAM_BOT_TOKEN is empty. Add it under Settings → Secrets and variables → Actions → Repository secrets (not Variables)."
+            exit 1
+          fi
+          if [ -z "${TELEGRAM_CHAT_ID}" ]; then
+            echo "::error::TELEGRAM_CHAT_ID is empty. Add it as a Repository secret with @YourChannel or the numeric id (not Variables)."
+            exit 1
+          fi
+
       - name: Send manual alert
         if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
         shell: bash
