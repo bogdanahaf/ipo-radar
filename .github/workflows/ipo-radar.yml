@@ -97,6 +97,21 @@ jobs:
             exit 1
           fi
 
+      - name: Verify Telegram chat (getChat)
+        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set -euo pipefail
+          chat="$(node --input-type=module -e "import { normalizeTelegramChatId } from './scripts/lib/telegram.js'; process.stdout.write(normalizeTelegramChatId(process.env.TELEGRAM_CHAT_ID));")"
+          resp="$(curl -sS -G "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getChat" --data-urlencode "chat_id=${chat}")"
+          ok="$(printf '%s' "$resp" | jq -r .ok)"
+          if [ "$ok" != "true" ]; then
+            echo "::error::Telegram getChat failed (fix TELEGRAM_CHAT_ID or add this bot as channel admin). Response: $(printf '%s' "$resp" | jq -c '{ok,error_code,description}')"
+            exit 1
+          fi
+
       - name: Send manual alert
         if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
         shell: bash
