@@ -61,6 +61,26 @@ test("buildAlertMessage includes ticker, site, and disclaimer", () => {
   assert.match(message, /Not financial or investment advice/);
 });
 
+test("buildAlertMessage includes prior digest day-1 recap block", () => {
+  const message = buildAlertMessage({
+    type: "tomorrow",
+    targetDate: "2026-05-15",
+    events: selectAlertEvents(events, "2026-05-11"),
+    siteUrl: "https://example.com/ipo-radar/",
+    day1FollowUp: {
+      sessionYmd: "2026-05-14",
+      rows: [
+        { symbol: "AAA", pct: 3.25 },
+        { symbol: "BBB", pct: null, note: "no bar for listing day" }
+      ]
+    }
+  });
+  assert.match(message, /Prior daily alert/);
+  assert.match(message, /\+3\.25%/);
+  assert.match(message, /AAA/);
+  assert.match(message, /BBB/);
+});
+
 test("buildAlertMessage interleaves listing-day web blurbs", () => {
   const message = buildAlertMessage({
     type: "tomorrow",
@@ -144,6 +164,8 @@ test("alert state prevents duplicate sends", async () => {
     const saved = JSON.parse(await readFile(statePath, "utf8"));
     assert.equal(getAlertKey("tomorrow", "2026-05-11") in saved.sent, true);
     assert.equal(wasAlertSent(saved, "tomorrow", "2026-05-11"), true);
+    assert.equal(saved.lastDailyDigest?.ipoDate, "2026-05-11");
+    assert.ok(Array.isArray(saved.lastDailyDigest?.symbols));
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

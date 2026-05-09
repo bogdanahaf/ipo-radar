@@ -84,6 +84,7 @@ jobs:
         if: github.event_name == 'schedule' && github.event.schedule == '30 12,13 * * 1-5'
         run: npm run alert -- --type today
         env:
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
@@ -97,6 +98,7 @@ jobs:
         if: github.event_name == 'schedule' && github.event.schedule == '30 20,21 * * 1-5'
         run: npm run alert -- --type tomorrow
         env:
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
@@ -182,6 +184,7 @@ jobs:
               ;;
           esac
         env:
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}

@@ -2,6 +2,7 @@
 import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { computeDay1FollowUpForAlert } from "./lib/av-day1.js";
 import { isHypeIpoEvent, selectWeekEvents } from "./lib/alerts.js";
 import { nextBusinessDay, upcomingCalendarWeekMonday, weekRangeMondayToSunday, ymdInTimeZone } from "./lib/dates.js";
 import {
@@ -134,10 +135,22 @@ export async function main(argv) {
     events = hypeOnly;
   }
 
+  if (events.length === 0 && !args.sendEmpty) {
+    console.log(`No interesting IPOs for ${type} alert ${targetDate}; nothing sent.`);
+    process.exit(0);
+  }
+
+  const state = await readAlertState(statePath);
+
   const contextLine =
     type === "today"
       ? `~1h before the US regular session; hype-tier IPO subset for ${targetDate}.`
       : `Next US regular session; filtered IPO listings for ${targetDate}.`;
+
+  const day1FollowUp =
+    events.length > 0 && !args.dryRun
+      ? await computeDay1FollowUpForAlert(state.lastDailyDigest, targetDate, process.env)
+      : null;
 
   const webNotesBySymbol =
     events.length > 0 && !args.dryRun
@@ -153,7 +166,8 @@ export async function main(argv) {
     targetDate,
     events,
     siteUrl: process.env.IPO_RADAR_SITE_URL,
-    webNotesBySymbol
+    webNotesBySymbol,
+    day1FollowUp: day1FollowUp ?? undefined
   });
 
   if (args.dryRun) {
@@ -161,12 +175,6 @@ export async function main(argv) {
     process.exit(0);
   }
 
-  if (events.length === 0 && !args.sendEmpty) {
-    console.log(`No interesting IPOs for ${type} alert ${targetDate}; nothing sent.`);
-    process.exit(0);
-  }
-
-  const state = await readAlertState(statePath);
   if (wasAlertSent(state, type, targetDate)) {
     console.log(`Alert ${type}:${targetDate} was already sent; skipping.`);
     process.exit(0);

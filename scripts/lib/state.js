@@ -22,14 +22,26 @@ export function wasAlertSent(state, type, targetDate) {
 }
 
 export function markAlertSent(state, type, targetDate, events, sentAt = new Date().toISOString()) {
-  return {
+  const symbols = events.map((event) => event.symbol).filter(Boolean);
+  const next = {
     ...state,
     sent: {
       ...(state.sent ?? {}),
       [getAlertKey(type, targetDate)]: {
         sentAt,
-        symbols: events.map((event) => event.symbol).filter(Boolean)
+        symbols
       }
     }
   };
+
+  if ((type === "today" || type === "tomorrow") && symbols.length > 0) {
+    next.lastDailyDigest = {
+      ipoDate: targetDate,
+      symbols: [...symbols],
+      sentAt,
+      alertType: type
+    };
+  }
+
+  return next;
 }

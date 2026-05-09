@@ -95,14 +95,37 @@ function formatWeekIpoDate(ymd) {
   }).format(new Date(Date.UTC(y, m - 1, d)));
 }
 
+export function formatListingDayLabel(ymd) {
+  return formatWeekIpoDate(ymd);
+}
+
 /** @param {Record<string, { media_spotlight: string, summary: string }>} webNotesBySymbol */
-export function buildAlertMessage({ type, targetDate, events, siteUrl, webNotesBySymbol = {} }) {
+export function buildAlertMessage({ type, targetDate, events, siteUrl, webNotesBySymbol = {}, day1FollowUp = null }) {
   const title =
     type === "today"
       ? `IPO Radar: ~1h to open — high-attention IPOs (${targetDate})`
       : `IPO Radar: interesting IPOs for next market day (${targetDate})`;
 
   const lines = [escapeHtml(title), ""];
+
+  if (day1FollowUp?.rows?.length) {
+    lines.push("<b>Prior daily alert — 1st session (close vs open)</b>", "");
+    lines.push(
+      `<i>Names from the last IPO digest · listing day ${escapeHtml(
+        formatListingDayLabel(day1FollowUp.sessionYmd)
+      )} · Alpha Vantage daily bar (approximate; not official NBBO).</i>`,
+      ""
+    );
+    for (const row of day1FollowUp.rows) {
+      const pctPart =
+        row.pct == null || Number.isNaN(row.pct)
+          ? "n/a"
+          : `${row.pct >= 0 ? "+" : ""}${row.pct.toFixed(2)}%`;
+      const notePart = row.note ? ` <i>(${escapeHtml(row.note)})</i>` : "";
+      lines.push(`<b>${escapeHtml(row.symbol)}</b> · ${escapeHtml(pctPart)} O→C${notePart}`);
+    }
+    lines.push("");
+  }
 
   if (events.length === 0) {
     lines.push("No interesting IPOs matched the v1 filter.");
