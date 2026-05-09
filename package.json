@@ -1,0 +1,17 @@
+{
+  "name": "ipo-radar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Static IPO calendar and Telegram alert pipeline for GitHub Pages.",
+  "scripts": {
+    "refresh": "node scripts/refresh-data.js",
+    "alert": "node scripts/send-alert.js",
+    "alert:today:dry": "node scripts/send-alert.js --type today --dry-run",
+    "alert:tomorrow:dry": "node scripts/send-alert.js --type tomorrow --dry-run",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

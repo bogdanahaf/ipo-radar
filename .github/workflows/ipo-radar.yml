@@ -1,0 +1,133 @@
+name: IPO Radar
+
+on:
+  workflow_dispatch:
+    inputs:
+      alert_type:
+        description: Alert to send after refresh
+        required: true
+        default: none
+        type: choice
+        options:
+          - none
+          - today
+          - tomorrow
+          - both
+      dry_run:
+        description: Print alert text without posting to Telegram
+        required: true
+        default: false
+        type: boolean
+  schedule:
+    - cron: "15 5,11,17,23 * * 1-5"
+    - cron: "30 12,13 * * 1-5"
+    - cron: "30 20,21 * * 1-5"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ipo-radar
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Refresh IPO data
+        run: npm run refresh
+        env:
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+          IPO_WATCHLIST: ${{ vars.IPO_WATCHLIST }}
+
+      - name: Send scheduled morning alert
+        if: github.event_name == 'schedule' && github.event.schedule == '30 12,13 * * 1-5'
+        run: npm run alert -- --type today
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+
+      - name: Send scheduled next-day alert
+        if: github.event_name == 'schedule' && github.event.schedule == '30 20,21 * * 1-5'
+        run: npm run alert -- --type tomorrow
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+
+      - name: Send manual alert
+        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
+        shell: bash
+        run: |
+          extra=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            extra="--dry-run"
+          fi
+
+          case "${{ inputs.alert_type }}" in
+            today)
+              npm run alert -- --type today $extra
+              ;;
+            tomorrow)
+              npm run alert -- --type tomorrow $extra
+              ;;
+            both)
+              npm run alert -- --type today $extra
+              npm run alert -- --type tomorrow $extra
+              ;;
+          esac
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+
+      - name: Commit updated data and alert state
+        if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/ipos.json docs/data/alert-state.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Update IPO Radar data"
+            git push
+          fi
+
+      - name: Configure Pages
+        if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name != 'workflow_dispatch' || inputs.dry_run == false
+        id: deployment
+        uses: actions/deploy-pages@v4

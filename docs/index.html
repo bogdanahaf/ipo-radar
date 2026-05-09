@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IPO Radar</title>
+    <meta
+      name="description"
+      content="A lightweight IPO calendar for next-day and market-open Telegram alerts."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">IPO Radar</p>
+        <h1>Upcoming IPO watchlist</h1>
+      </div>
+      <div class="status" id="status">Loading data</div>
+    </header>
+
+    <main class="layout">
+      <section class="metrics" aria-label="IPO counts">
+        <div class="metric">
+          <span class="metric__label">Visible</span>
+          <strong id="visible-count">0</strong>
+        </div>
+        <div class="metric">
+          <span class="metric__label">Filtered</span>
+          <strong id="hidden-count">0</strong>
+        </div>
+        <div class="metric">
+          <span class="metric__label">Updated</span>
+          <strong id="updated-at">Never</strong>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__heading">
+          <div>
+            <p class="eyebrow">Next market day</p>
+            <h2 id="tomorrow-title">Tomorrow</h2>
+          </div>
+        </div>
+        <div class="ipo-list" id="tomorrow-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__heading">
+          <div>
+            <p class="eyebrow">Market day</p>
+            <h2 id="today-title">Today</h2>
+          </div>
+        </div>
+        <div class="ipo-list" id="today-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__heading">
+          <div>
+            <p class="eyebrow">Calendar</p>
+            <h2>Upcoming</h2>
+          </div>
+        </div>
+        <div class="ipo-list ipo-list--compact" id="upcoming-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__heading">
+          <div>
+            <p class="eyebrow">Noise control</p>
+            <h2>Filtered out</h2>
+          </div>
+        </div>
+        <div class="ipo-list ipo-list--compact" id="hidden-list"></div>
+      </section>
+
+      <section class="sources" aria-label="Sources">
+        <a href="https://www.alphavantage.co/documentation/#ipo-calendar">Alpha Vantage IPO Calendar</a>
+        <a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces">SEC EDGAR APIs</a>
+        <a href="https://www.nasdaq.com/market-activity/ipos">Nasdaq IPO Calendar</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Educational only. Not financial or investment advice.
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
