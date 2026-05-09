@@ -60,6 +60,8 @@ npm run alert -- --type tomorrow
 
 All of this is the **IPO Radar** workflow unless noted. `dry_run` should be **false** unless you are only printing text.
 
+For a manual **`week`** run, **`week_preview`** defaults to **on** in Actions: the digest is posted but **`alert-state.json` is not updated**, so the **scheduled Sunday** digest for the same Mon–Sun window can still fire. Turn **`week_preview`** off only if you want that manual run to count as the official week send for dedupe purposes.
+
 | `alert_type` | Alpha Vantage refresh | Commit `docs/data/*.json` | Deploy Pages | Telegram |
 | --- | --- | --- | --- | --- |
 | **`sync`** / **`none`** | yes | yes (if diff) | yes | no |

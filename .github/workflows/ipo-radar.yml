@@ -24,6 +24,14 @@ on:
         required: true
         default: false
         type: boolean
+      week_preview:
+        description: >-
+          For manual "week" only (default on) — send the digest but do not write alert-state,
+          so the scheduled Sunday job for the same Mon–Sun window can still run. Turn off only
+          if you intentionally want this manual run to replace Sunday for that week.
+        required: true
+        default: true
+        type: boolean
   schedule:
     - cron: "30 12,13 * * 1-5"
     - cron: "30 20,21 * * 1-5"
@@ -147,6 +155,10 @@ jobs:
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             extra="--dry-run"
           fi
+          week_preview_flag=""
+          if [ "${{ inputs.week_preview }}" = "true" ]; then
+            week_preview_flag="--week-preview"
+          fi
 
           case "${{ inputs.alert_type }}" in
             sync|none)
@@ -162,7 +174,7 @@ jobs:
               npm run alert -- --type tomorrow $extra
               ;;
             week)
-              npm run alert -- --type week $extra
+              npm run alert -- --type week $extra $week_preview_flag
               ;;
             both)
               npm run alert -- --type today $extra

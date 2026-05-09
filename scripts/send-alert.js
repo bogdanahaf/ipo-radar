@@ -71,7 +71,7 @@ export async function main(argv) {
     }
 
     const state = await readAlertState(statePath);
-    if (wasAlertSent(state, "week", weekStart)) {
+    if (!args.weekPreview && wasAlertSent(state, "week", weekStart)) {
       console.log(`Week digest for ${weekStart} was already sent; skipping.`);
       process.exit(0);
     }
@@ -87,8 +87,11 @@ export async function main(argv) {
       text
     });
 
-    await writeAlertState(statePath, markAlertSent(state, "week", weekStart, events));
-    console.log(`Sent week digest ${weekStart}..${weekEnd} with ${events.length} IPOs.`);
+    if (!args.weekPreview) {
+      await writeAlertState(statePath, markAlertSent(state, "week", weekStart, events));
+    }
+    const previewNote = args.weekPreview ? " (preview; alert state unchanged — Sunday digest can still send)" : "";
+    console.log(`Sent week digest ${weekStart}..${weekEnd} with ${events.length} IPOs.${previewNote}`);
     process.exit(0);
   }
 
@@ -182,6 +185,7 @@ function parseArgs(argv) {
     else if (arg === "--week-start") parsed.weekStart = argv[++index];
     else if (arg === "--dry-run") parsed.dryRun = true;
     else if (arg === "--send-empty") parsed.sendEmpty = true;
+    else if (arg === "--week-preview") parsed.weekPreview = true;
   }
   return parsed;
 }
