@@ -1,3 +1,24 @@
+export function buildPingMessage({ siteUrl }) {
+  const lines = [
+    "<b>IPO Radar: Telegram is connected.</b>",
+    "",
+    "You should receive:",
+    "• After the US close — filtered names for the <b>next</b> market day.",
+    "• On listing day — about <b>one hour before</b> the regular session opens.",
+    "",
+    "<i>Buzz scores are heuristic “narrative heat” only, not forecasts of returns or volatility.</i>",
+    ""
+  ];
+
+  if (siteUrl) {
+    lines.push(`<a href="${escapeHtml(siteUrl)}">Open IPO Radar dashboard</a>`);
+    lines.push("");
+  }
+
+  lines.push("Educational only. Not financial or investment advice.");
+  return trimTelegramMessage(lines.join("\n"));
+}
+
 export function buildAlertMessage({ type, targetDate, events, siteUrl }) {
   const title =
     type === "today"
@@ -20,6 +41,14 @@ export function buildAlertMessage({ type, targetDate, events, siteUrl }) {
         `<b>${escapeHtml(event.symbol || "TBD")}</b> - ${escapeHtml(event.companyName || "Unknown company")}`
       );
       if (details.length) lines.push(escapeHtml(details.join(" | ")));
+      if (event.buzzScore != null && event.attentionBand) {
+        const buzzBits = [
+          `Buzz ${event.buzzScore}/100 (${event.attentionBand})`,
+          event.buzzReasons?.length ? escapeHtml(event.buzzReasons.slice(0, 3).join("; ")) : ""
+        ].filter(Boolean);
+        lines.push(buzzBits.join(" — "));
+        lines.push("<i>Heuristic only, not a performance forecast.</i>");
+      }
       lines.push("");
     }
   }

@@ -10,6 +10,7 @@ on:
         type: choice
         options:
           - none
+          - ping
           - today
           - tomorrow
           - both
@@ -86,6 +87,9 @@ jobs:
           fi
 
           case "${{ inputs.alert_type }}" in
+            ping)
+              npm run alert -- --type ping $extra
+              ;;
             today)
               npm run alert -- --type today $extra
               ;;

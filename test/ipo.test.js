@@ -13,6 +13,8 @@ test("parseAlphaVantageCsv classifies watchlist, SPAC, unit, microcap, and low s
   const bySymbol = Object.fromEntries(events.map((event) => [event.symbol, event]));
   assert.equal(bySymbol.FIG.hiddenReason, undefined);
   assert.equal(bySymbol.FIG.score >= 100, true);
+  assert.equal(typeof bySymbol.FIG.buzzScore, "number");
+  assert.match(bySymbol.FIG.attentionBand, /^(high|medium|low)$/);
   assert.equal(bySymbol.NHIV.hiddenReason, "spac");
   assert.equal(bySymbol.ALOVU.hiddenReason, "unit");
   assert.equal(bySymbol.BIOX.hiddenReason, "microcap");

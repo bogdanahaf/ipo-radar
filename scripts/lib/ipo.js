@@ -104,7 +104,7 @@ export function classifyIpoEvent(event, options = {}) {
     hiddenReason = "low_signal";
   }
 
-  return {
+  const enriched = {
     ...event,
     exchange: event.exchange || undefined,
     priceRange: event.priceRange || undefined,
@@ -112,6 +112,9 @@ export function classifyIpoEvent(event, options = {}) {
     reasons,
     hiddenReason
   };
+
+  const buzz = computeBuzzMetrics(enriched, { matchedWatchlist });
+  return { ...enriched, ...buzz };
 }
 
 export function splitVisibleAndHidden(events) {
@@ -198,11 +201,96 @@ function looksLikeUnit(symbol = "", name = "") {
 }
 
 function looksLikeMicrocap(priceRange = "") {
-  const numbers = String(priceRange)
+  const numbers = numbersFromPriceRange(priceRange);
+  if (!numbers?.length) return false;
+  return Math.max(...numbers) < 5;
+}
+
+function numbersFromPriceRange(priceRange = "") {
+  return String(priceRange)
     .match(/\d+(?:\.\d+)?/g)
     ?.map(Number)
     .filter((value) => Number.isFinite(value));
+}
 
-  if (!numbers?.length) return false;
-  return Math.max(...numbers) < 5;
+function maxPriceFromRange(priceRange = "") {
+  const numbers = numbersFromPriceRange(priceRange);
+  if (!numbers?.length) return null;
+  return Math.max(...numbers);
+}
+
+/**
+ * Narrative "heat" from name, exchange, and price band — not volatility or return prediction.
+ */
+export function computeBuzzMetrics(event, { matchedWatchlist } = {}) {
+  const name = (event.companyName ?? "").toLowerCase();
+  const exchange = normalizeExchange(event.exchange ?? "");
+  const buzzReasons = [];
+  let buzzScore = 12;
+
+  if (matchedWatchlist) {
+    buzzScore += 26;
+    buzzReasons.push(`watchlist: ${matchedWatchlist}`);
+  }
+
+  const narrativeGroups = [
+    {
+      pattern:
+        /(\bai\b|artificial intelligence|machine learning|semiconductor|\bchip\b|quantum|robotics|autonomous)/i,
+      weight: 22,
+      label: "AI / semis / autonomy"
+    },
+    {
+      pattern: /\b(cloud|cyber|fintech|software|platform|saas|data center|infrastructure)\b/i,
+      weight: 17,
+      label: "software / infra / fintech"
+    },
+    {
+      pattern: /\b(biotech|pharma|therapeutic|clinical|medical device|diagnostic)\b/i,
+      weight: 14,
+      label: "bio / health"
+    },
+    {
+      pattern: /\b(battery|electric vehicle|\bev\b|space|satellite|carbon capture)\b/i,
+      weight: 12,
+      label: "mobility / climate / space"
+    }
+  ];
+
+  let narrativePoints = 0;
+  for (const group of narrativeGroups) {
+    if (group.pattern.test(name)) {
+      narrativePoints += group.weight;
+      buzzReasons.push(group.label);
+    }
+  }
+  buzzScore += Math.min(48, narrativePoints);
+
+  if (MAJOR_EXCHANGES.has(exchange)) {
+    buzzScore += 8;
+    buzzReasons.push("major listing venue");
+  }
+  if (exchange === "nasdaq") {
+    buzzScore += 4;
+  }
+
+  const topPrice = maxPriceFromRange(event.priceRange ?? "");
+  if (topPrice != null) {
+    if (topPrice >= 22) {
+      buzzScore += 14;
+      buzzReasons.push("higher indicated price band");
+    } else if (topPrice >= 15) {
+      buzzScore += 8;
+      buzzReasons.push("mid price band");
+    }
+  }
+
+  buzzScore = Math.min(100, Math.round(buzzScore));
+  const attentionBand = buzzScore >= 68 ? "high" : buzzScore >= 44 ? "medium" : "low";
+
+  return {
+    buzzScore,
+    buzzReasons: [...new Set(buzzReasons)].slice(0, 5),
+    attentionBand
+  };
 }

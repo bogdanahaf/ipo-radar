@@ -9,7 +9,7 @@ import {
   wasAlertSent,
   writeAlertState
 } from "./lib/state.js";
-import { buildAlertMessage, sendTelegramMessage } from "./lib/telegram.js";
+import { buildAlertMessage, buildPingMessage, sendTelegramMessage } from "./lib/telegram.js";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -23,6 +23,23 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 export async function main(argv) {
   const args = parseArgs(argv);
   const type = args.type ?? "tomorrow";
+
+  if (type === "ping") {
+    const text = buildPingMessage({ siteUrl: process.env.IPO_RADAR_SITE_URL });
+    if (args.dryRun) {
+      console.log(text);
+      process.exit(0);
+    }
+
+    await sendTelegramMessage({
+      token: process.env.TELEGRAM_BOT_TOKEN,
+      chatId: process.env.TELEGRAM_CHAT_ID,
+      text
+    });
+    console.log("Sent IPO Radar Telegram ping.");
+    process.exit(0);
+  }
+
   const dataPath = resolve(rootDir, args.data ?? "docs/data/ipos.json");
   const statePath = resolve(rootDir, args.state ?? "docs/data/alert-state.json");
   const now = args.now ? new Date(args.now) : new Date();
@@ -30,7 +47,7 @@ export async function main(argv) {
   const targetDate = args.targetDate ?? (type === "today" ? today : nextBusinessDay(today));
 
   if (!["today", "tomorrow"].includes(type)) {
-    throw new Error("--type must be either today or tomorrow.");
+    throw new Error("--type must be today, tomorrow, or ping.");
   }
 
   const payload = JSON.parse(await readFile(dataPath, "utf8"));

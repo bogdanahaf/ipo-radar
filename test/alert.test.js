@@ -11,7 +11,7 @@ import {
   wasAlertSent,
   writeAlertState
 } from "../scripts/lib/state.js";
-import { buildAlertMessage } from "../scripts/lib/telegram.js";
+import { buildAlertMessage, buildPingMessage } from "../scripts/lib/telegram.js";
 
 const events = [
   {
@@ -23,6 +23,9 @@ const events = [
     source: "alpha_vantage",
     score: 125,
     reasons: ["watchlist match: figma", "major exchange: NASDAQ"],
+    buzzScore: 72,
+    attentionBand: "high",
+    buzzReasons: ["watchlist: figma", "major listing venue"],
     updatedAt: "2026-05-08T00:00:00.000Z"
   },
   {
@@ -52,7 +55,15 @@ test("buildAlertMessage includes ticker, site, and disclaimer", () => {
   });
 
   assert.match(message, /FIG/);
+  assert.match(message, /Buzz 72\/100 \(high\)/);
   assert.match(message, /Open IPO Radar dashboard/);
+  assert.match(message, /Not financial or investment advice/);
+});
+
+test("buildPingMessage includes dashboard link and disclaimer", () => {
+  const message = buildPingMessage({ siteUrl: "https://example.com/ipo-radar/" });
+  assert.match(message, /Telegram is connected/);
+  assert.match(message, /ipo-radar/);
   assert.match(message, /Not financial or investment advice/);
 });
 

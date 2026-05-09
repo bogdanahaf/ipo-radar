@@ -9,6 +9,8 @@
     "alert": "node scripts/send-alert.js",
     "alert:today:dry": "node scripts/send-alert.js --type today --dry-run",
     "alert:tomorrow:dry": "node scripts/send-alert.js --type tomorrow --dry-run",
+    "alert:ping": "node scripts/send-alert.js --type ping",
+    "alert:ping:dry": "node scripts/send-alert.js --type ping --dry-run",
     "test": "node --test"
   },
   "engines": {

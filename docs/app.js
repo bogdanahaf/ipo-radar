@@ -79,7 +79,21 @@ function renderCard(event) {
         ${event.ipoDate ? `<span class="pill">${formatDate(event.ipoDate)}</span>` : ""}
         ${event.exchange ? `<span class="pill">${escapeHtml(event.exchange)}</span>` : ""}
         ${event.priceRange ? `<span class="pill pill--alert">${escapeHtml(event.priceRange)}</span>` : ""}
+        ${
+          event.buzzScore != null && event.attentionBand
+            ? `<span class="pill pill--buzz buzz--${escapeHtml(event.attentionBand)}">Buzz ${escapeHtml(
+                String(event.buzzScore)
+              )} · ${escapeHtml(event.attentionBand)}</span>`
+            : ""
+        }
       </div>
+      ${
+        event.buzzReasons?.length
+          ? `<p class="buzz-note">Narrative heat (heuristic): ${escapeHtml(
+              event.buzzReasons.slice(0, 4).join(" · ")
+            )}. Not a forecast of returns or day-one volatility.</p>`
+          : ""
+      }
       <p class="reasons">${escapeHtml(reasons.slice(0, 3).join(" | ") || "No scoring details.")}</p>
     </article>
   `;

@@ -13,6 +13,7 @@ It uses the Alpha Vantage `IPO_CALENDAR` endpoint as the main free data source, 
 - Sends Telegram alerts for:
   - next market day IPOs after market close
   - same-day IPOs about one hour before market open
+- Adds a **buzz** line per listing: keyword + venue + price-band heuristics for “narrative heat” only (not a return or volatility forecast).
 - Stores `docs/data/alert-state.json` to avoid duplicate channel posts.
 
 ## What v1 does not do
@@ -29,6 +30,7 @@ npm test
 npm run refresh -- --input test/fixtures/alpha-vantage-sample.csv
 npm run alert:tomorrow:dry
 npm run alert:today:dry
+npm run alert:ping:dry
 ```
 
 For a live refresh:
@@ -45,6 +47,13 @@ TELEGRAM_CHAT_ID=@your_channel_username \
 IPO_RADAR_SITE_URL=https://your-github-user.github.io/ipo-radar/ \
 npm run alert -- --type tomorrow
 ```
+
+### Verify Telegram (first message)
+
+- **GitHub:** Actions → **IPO Radar** → Run workflow → `alert_type: ping`, `dry_run: false`. This posts a short “connected” message even when the calendar is empty. It does **not** touch `alert-state.json` dedupe keys for `today` / `tomorrow`.
+- **Local:** `npm run alert:ping` with the same `TELEGRAM_*` and `IPO_RADAR_SITE_URL` env vars.
+
+Scheduled runs still send **tomorrow’s list after the close** and **today’s list about an hour before the US open** (see cron times below). There is no separate “full day” digest unless you add another cron or run the workflow manually.
 
 ## GitHub setup
 
@@ -90,6 +99,9 @@ type IpoEvent = {
   score: number;
   reasons: string[];
   hiddenReason?: "spac" | "unit" | "microcap" | "missing_date" | "low_signal";
+  buzzScore: number;
+  attentionBand: "high" | "medium" | "low";
+  buzzReasons: string[];
   updatedAt: string;
 };
 ```
@@ -100,6 +112,7 @@ Rules in v1:
 - Nasdaq/NYSE rows with valid dates are treated as potentially interesting.
 - Likely SPACs, unit/warrant rows, sub-$5 IPOs, missing-date rows, and weak-signal rows are hidden from Telegram.
 - Hidden rows still render in the dashboard for review.
+- **Buzz** ranks attention from story-like keywords (AI, software, bio, etc.), listing venue, price band, and watchlist hits. Use it to sort what to read first, not to infer opening prints.
 
 ## Schedules
 
