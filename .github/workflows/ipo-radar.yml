@@ -4,11 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       alert_type:
-        description: Alert to send after refresh
+        description: >-
+          sync/none = Alpha Vantage refresh + commit data + deploy Pages (no Telegram).
+          tomorrow/today/week/both = same pipeline + Telegram (needs bot secrets).
+          ping = Telegram only (skips Alpha Vantage refresh).
         required: true
-        default: none
+        default: sync
         type: choice
         options:
+          - sync
           - none
           - ping
           - today
@@ -96,7 +100,7 @@ jobs:
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
 
       - name: Require Telegram secrets for manual alerts
-        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
+        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none' && inputs.alert_type != 'sync'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -111,7 +115,7 @@ jobs:
           fi
 
       - name: Verify Telegram chat (getChat)
-        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
+        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none' && inputs.alert_type != 'sync'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -126,7 +130,7 @@ jobs:
           fi
 
       - name: Send manual alert
-        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none'
+        if: github.event_name == 'workflow_dispatch' && inputs.alert_type != 'none' && inputs.alert_type != 'sync'
         shell: bash
         run: |
           extra=""
@@ -135,6 +139,9 @@ jobs:
           fi
 
           case "${{ inputs.alert_type }}" in
+            sync|none)
+              echo "Data + Pages only (no Telegram in this step)."
+              ;;
             ping)
               npm run alert -- --type ping $extra
               ;;

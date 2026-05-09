@@ -56,7 +56,27 @@ npm run alert -- --type tomorrow
 - **Ping skips the Alpha Vantage refresh** so you can prove Telegram wiring even if `ALPHAVANTAGE_API_KEY` is missing or rate-limited. Full runs still require the key for `npm run refresh`.
 - **Local:** `npm run alert:ping` with the same `TELEGRAM_*` and `IPO_RADAR_SITE_URL` env vars.
 
-**Test the full flow:** Actions → IPO Radar → `alert_type: none` (refresh + deploy), then `week` or `tomorrow` with `dry_run: false` after data exists. `ping` still skips Alpha Vantage.
+### Full pipeline (data + alerts) — what to click
+
+All of this is the **IPO Radar** workflow unless noted. `dry_run` should be **false** unless you are only printing text.
+
+| `alert_type` | Alpha Vantage refresh | Commit `docs/data/*.json` | Deploy Pages | Telegram |
+| --- | --- | --- | --- | --- |
+| **`sync`** / **`none`** | yes | yes (if diff) | yes | no |
+| **`ping`** | **no** | no | yes | yes (connectivity ping) |
+| **`tomorrow`** | yes | yes (if diff) | yes | yes — **next session** digest (same idea as the weekday after-close job) |
+| **`today`** | yes | yes (if diff) | yes | yes — **~1h pre-open**, **hype gate** (skipped if nothing hype-tier lists that day) |
+| **`week`** | yes | yes (if diff) | yes | yes — **Mon–Sun** window digest (+ optional OpenAI skim if `OPENAI_API_KEY` is set) |
+| **`both`** | yes | yes (if diff) | yes | yes — runs **`today`** then **`tomorrow`** |
+
+**The “full” operator loop you usually want**
+
+1. **`sync`** (default) or **`none`** — pull calendar JSON, push it to `main` if it changed, redeploy Pages. No Telegram noise.
+2. **`tomorrow`** when you also want the **next-session** channel post immediately (or rely on the Mon–Fri **20:30/21:30 UTC** schedule instead).
+3. **`week`** when you want the **week-ahead** post on demand (or wait for **Sunday 21:00 UTC**).
+4. **`Pages site only`** (separate workflow) — redeploy `docs/` from git **without** Alpha Vantage or tests; use when the main job failed after refresh but you still want the latest HTML live.
+
+Scheduled automation mirrors **`tomorrow`**, **`today`** (hype-gated), and **`week`** as described in **Schedules** below.
 
 ## GitHub setup
 
@@ -79,7 +99,7 @@ git push -u origin main
    - optional `IPO_HYPE_THRESHOLD` (number, default `68` for the pre-open hype gate)
    - optional `OPENAI_MODEL` (defaults to `gpt-4o-mini` when an OpenAI key is present)
 5. In repository Settings -> Pages, set the source to GitHub Actions.
-6. Run the `IPO Radar` workflow manually once.
+6. Run the `IPO Radar` workflow manually once (default **`sync`** = data + Pages only).
 
 ### Pages UI looks stale
 
