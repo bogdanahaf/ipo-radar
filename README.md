@@ -160,6 +160,17 @@ Cron times are UTC (duplicate morning slots stay DST-safe):
 
 Duplicate prevention is handled by `docs/data/alert-state.json`.
 
+### Will the workflow keep running?
+
+**Yes — on every cron match.** `on.schedule` in `.github/workflows/ipo-radar.yml` starts a **new** workflow run each time (Mon–Fri twice for `today`, twice for `tomorrow`, Sun for `week`). A successful run does **not** disable the next one.
+
+What *can* look like “it only ran once”:
+
+- **Telegram skipped** — `send-alert.js` checks `alert-state.json`; if that `today`/`tomorrow`/`week` key was already sent for the same date/window, the job still **finishes green** but logs something like `already sent; skipping` and does not post again. That is intentional dedupe, not a broken schedule.
+- **GitHub UI** — filter **Actions → IPO Radar** and sort by time: you should see recurring runs at the UTC times under **Schedules** (roughly every weekday for the two jobs, plus Sunday).
+
+**Node.js 20 warning on Pages steps:** the job sets `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24` so those actions run on Node 24. GitHub may still print an advisory until `configure-pages` / `deploy-pages` / `upload-pages-artifact` update their declared runtime; it does not mean the job ran only once.
+
 ## Analytics for the public Pages site
 
 GitHub Pages is static HTML — there is no built-in visitor analytics. Common minimal options:
