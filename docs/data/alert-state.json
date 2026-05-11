@@ -10,6 +10,20 @@
         "BXDC",
         "RIKU"
       ]
+    },
+    "tomorrow:2026-05-12": {
+      "sentAt": "2026-05-11T21:50:10.894Z",
+      "symbols": [
+        "BWGC"
+      ]
     }
+  },
+  "lastDailyDigest": {
+    "ipoDate": "2026-05-12",
+    "symbols": [
+      "BWGC"
+    ],
+    "sentAt": "2026-05-11T21:50:10.894Z",
+    "alertType": "tomorrow"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T15:44:52.039Z",
+  "generatedAt": "2026-05-11T21:50:00.953Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $6 - $7"
       ],
-      "updatedAt": "2026-05-11T15:44:52.039Z",
+      "updatedAt": "2026-05-11T21:50:00.953Z",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
@@ -43,7 +43,7 @@
         "major exchange: NASDAQ",
         "price range: $21 - $24"
       ],
-      "updatedAt": "2026-05-11T15:44:52.039Z",
+      "updatedAt": "2026-05-11T21:50:00.953Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -64,7 +64,7 @@
         "major exchange: NYSE",
         "price range: $22 - $25"
       ],
-      "updatedAt": "2026-05-11T15:44:52.039Z",
+      "updatedAt": "2026-05-11T21:50:00.953Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -85,7 +85,7 @@
         "major exchange: NASDAQ",
         "price range: $115 - $125"
       ],
-      "updatedAt": "2026-05-11T15:44:52.039Z",
+      "updatedAt": "2026-05-11T21:50:00.953Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -106,7 +106,7 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-11T15:44:52.039Z",
+      "updatedAt": "2026-05-11T21:50:00.953Z",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
