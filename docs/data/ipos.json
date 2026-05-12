@@ -1,30 +1,264 @@
 {
-  "generatedAt": "2026-05-12T15:21:32.393Z",
+  "generatedAt": "2026-05-12T21:50:26.706Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 1,
-    "visible": 0,
-    "hidden": 1
+    "total": 12,
+    "visible": 6,
+    "hidden": 6
   },
   "events": [
     {
-      "symbol": "I",
-      "companyName": "n",
-      "exchange": "a",
-      "ipoDate": "",
-      "priceRange": "o - r",
+      "symbol": "BWGC",
+      "companyName": "BW Industrial Holdings Inc.",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-12",
+      "priceRange": "$6 - $7",
       "source": "alpha_vantage",
-      "score": 10,
+      "score": 55,
       "reasons": [
-        "price range: o - r"
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $6 - $7"
       ],
-      "updatedAt": "2026-05-12T15:21:32.393Z",
-      "hiddenReason": "missing_date",
-      "buzzScore": 12,
-      "buzzReasons": [],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "SMCP",
+      "companyName": "Tidal Trust I",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-12",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "SSCP",
+      "companyName": "SMART Small Cap ETF",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-12",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "VAIE",
+      "companyName": "VegaShares ETF Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-12",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "VIDA",
+      "companyName": "Vidaroo Corp",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-12",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "AXTN",
+      "companyName": "Akston Biosciences Corporation",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-13",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "FRVO",
+      "companyName": "Fervo Energy Co",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-05-13",
+      "priceRange": "$21 - $24",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $21 - $24"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "GMRS",
+      "companyName": "GMR Solutions Inc.",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-13",
+      "priceRange": "$22 - $25",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $22 - $25"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "buzzScore": 34,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "AIAI",
+      "companyName": "AIAI Holdings Corporation Class A Common Stock",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-05-14",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "BXDC",
+      "companyName": "Blackstone Digital Infrastructure Trust Inc.",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-14",
+      "priceRange": "$20",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $20"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "buzzScore": 45,
+      "buzzReasons": [
+        "software / infra / fintech",
+        "major listing venue",
+        "mid price band"
+      ],
+      "attentionBand": "medium"
+    },
+    {
+      "symbol": "CBRS",
+      "companyName": "Cerebras Systems Inc.",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-05-14",
+      "priceRange": "$115 - $125",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $115 - $125"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "RIKU",
+      "companyName": "RIKU DINING GROUP Ltd",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-05-15",
+      "priceRange": "$4 - $6",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $4 - $6"
+      ],
+      "updatedAt": "2026-05-12T21:50:26.706Z",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
       "attentionBand": "low"
     }
   ]

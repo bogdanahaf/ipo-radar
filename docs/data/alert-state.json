@@ -16,14 +16,22 @@
       "symbols": [
         "BWGC"
       ]
+    },
+    "tomorrow:2026-05-13": {
+      "sentAt": "2026-05-12T21:50:33.182Z",
+      "symbols": [
+        "FRVO",
+        "GMRS"
+      ]
     }
   },
   "lastDailyDigest": {
-    "ipoDate": "2026-05-12",
+    "ipoDate": "2026-05-13",
     "symbols": [
-      "BWGC"
+      "FRVO",
+      "GMRS"
     ],
-    "sentAt": "2026-05-11T21:50:10.894Z",
+    "sentAt": "2026-05-12T21:50:33.182Z",
     "alertType": "tomorrow"
   }
 }
