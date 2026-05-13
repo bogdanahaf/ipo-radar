@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-13T15:24:43.365Z",
+  "generatedAt": "2026-05-13T21:53:13.874Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-13T15:24:43.365Z",
+      "updatedAt": "2026-05-13T21:53:13.874Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -44,7 +44,7 @@
         "major exchange: NASDAQ",
         "price range: $21 - $24"
       ],
-      "updatedAt": "2026-05-13T15:24:43.365Z",
+      "updatedAt": "2026-05-13T21:53:13.874Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -65,7 +65,7 @@
         "major exchange: NYSE",
         "price range: $22 - $25"
       ],
-      "updatedAt": "2026-05-13T15:24:43.365Z",
+      "updatedAt": "2026-05-13T21:53:13.874Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -86,7 +86,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-13T15:24:43.365Z",
+      "updatedAt": "2026-05-13T21:53:13.874Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -107,7 +107,7 @@
         "major exchange: NYSE",
         "price range: $20"
       ],
-      "updatedAt": "2026-05-13T15:24:43.365Z",
+      "updatedAt": "2026-05-13T21:53:13.874Z",
       "buzzScore": 45,
       "buzzReasons": [
         "software / infra / fintech",
@@ -129,7 +129,7 @@
         "major exchange: NASDAQ",
         "price range: $115 - $125"
       ],
-      "updatedAt": "2026-05-13T15:24:43.365Z",
+      "updatedAt": "2026-05-13T21:53:13.874Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -150,7 +150,7 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-13T15:24:43.365Z",
+      "updatedAt": "2026-05-13T21:53:13.874Z",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"

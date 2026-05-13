@@ -23,15 +23,22 @@
         "FRVO",
         "GMRS"
       ]
+    },
+    "tomorrow:2026-05-14": {
+      "sentAt": "2026-05-13T21:53:20.188Z",
+      "symbols": [
+        "BXDC",
+        "CBRS"
+      ]
     }
   },
   "lastDailyDigest": {
-    "ipoDate": "2026-05-13",
+    "ipoDate": "2026-05-14",
     "symbols": [
-      "FRVO",
-      "GMRS"
+      "BXDC",
+      "CBRS"
     ],
-    "sentAt": "2026-05-12T21:50:33.182Z",
+    "sentAt": "2026-05-13T21:53:20.188Z",
     "alertType": "tomorrow"
   }
 }
