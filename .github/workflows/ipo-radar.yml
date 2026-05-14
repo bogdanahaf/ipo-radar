@@ -89,6 +89,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
           IPO_HYPE_THRESHOLD: ${{ vars.IPO_HYPE_THRESHOLD }}
+          IPO_AV_TIME_SERIES_DELAY_MS: ${{ vars.IPO_AV_TIME_SERIES_DELAY_MS }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
           OPENAI_RESPONSES_MODEL: ${{ vars.OPENAI_RESPONSES_MODEL }}
@@ -102,6 +103,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
+          IPO_AV_TIME_SERIES_DELAY_MS: ${{ vars.IPO_AV_TIME_SERIES_DELAY_MS }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
           OPENAI_RESPONSES_MODEL: ${{ vars.OPENAI_RESPONSES_MODEL }}
@@ -189,6 +191,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           IPO_RADAR_SITE_URL: ${{ vars.IPO_RADAR_SITE_URL }}
           IPO_HYPE_THRESHOLD: ${{ vars.IPO_HYPE_THRESHOLD }}
+          IPO_AV_TIME_SERIES_DELAY_MS: ${{ vars.IPO_AV_TIME_SERIES_DELAY_MS }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
           OPENAI_RESPONSES_MODEL: ${{ vars.OPENAI_RESPONSES_MODEL }}

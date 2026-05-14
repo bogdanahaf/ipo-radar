@@ -70,12 +70,14 @@ test("buildAlertMessage includes prior digest day-1 recap block", () => {
     day1FollowUp: {
       sessionYmd: "2026-05-14",
       rows: [
-        { symbol: "AAA", pct: 3.25 },
-        { symbol: "BBB", pct: null, note: "no bar for listing day" }
+        { symbol: "AAA", pct: 3.25, open: 100, close: 103.25 },
+        { symbol: "BBB", pct: null, open: null, close: null, note: "no bar for listing day" }
       ]
     }
   });
   assert.match(message, /Prior daily alert/);
+  assert.match(message, /\$100\.00/);
+  assert.match(message, /\$103\.25/);
   assert.match(message, /\+3\.25%/);
   assert.match(message, /AAA/);
   assert.match(message, /BBB/);

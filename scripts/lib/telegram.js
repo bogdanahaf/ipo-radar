@@ -117,12 +117,29 @@ export function buildAlertMessage({ type, targetDate, events, siteUrl, webNotesB
       ""
     );
     for (const row of day1FollowUp.rows) {
-      const pctPart =
-        row.pct == null || Number.isNaN(row.pct)
-          ? "n/a"
-          : `${row.pct >= 0 ? "+" : ""}${row.pct.toFixed(2)}%`;
+      const o = row.open;
+      const c = row.close;
+      const hasOhlc = Number.isFinite(o) && Number.isFinite(c);
+      const pct =
+        row.pct != null && !Number.isNaN(row.pct)
+          ? row.pct
+          : hasOhlc && o !== 0
+            ? ((c - o) / o) * 100
+            : null;
+
+      let line = `<b>${escapeHtml(row.symbol)}</b> · `;
+      if (hasOhlc) {
+        line += `O ${escapeHtml(`$${o.toFixed(2)}`)} → C ${escapeHtml(`$${c.toFixed(2)}`)}`;
+        if (pct != null && !Number.isNaN(pct)) {
+          line += ` · ${escapeHtml(`${pct >= 0 ? "+" : ""}${pct.toFixed(2)}`)}%`;
+        }
+      } else if (pct != null && !Number.isNaN(pct)) {
+        line += `${escapeHtml(`${pct >= 0 ? "+" : ""}${pct.toFixed(2)}`)}% O→C`;
+      } else {
+        line += "n/a";
+      }
       const notePart = row.note ? ` <i>(${escapeHtml(row.note)})</i>` : "";
-      lines.push(`<b>${escapeHtml(row.symbol)}</b> · ${escapeHtml(pctPart)} O→C${notePart}`);
+      lines.push(`${line}${notePart}`);
     }
     lines.push("");
   }

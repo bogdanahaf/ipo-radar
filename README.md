@@ -14,7 +14,8 @@ It uses the Alpha Vantage `IPO_CALENDAR` endpoint as the main free data source, 
   - **Sunday 21:00 UTC** — Mon–Sun **week digest** (filtered IPOs in that window + buzz lines).
   - **Mon–Fri after the US close** — filtered names for the **next** market day.
   - **Mon–Fri ~1 hour before the open** — **only if** that session has at least one **hype** IPO (`attentionBand: high` **or** `buzzScore ≥` threshold; default threshold **68**, override with `IPO_HYPE_THRESHOLD`).
-- When a **today** or **tomorrow** post goes out, the next such post (after one or more skipped days) can prepend **day-1 open→close %** for tickers from the **last** daily digest, using Alpha Vantage `TIME_SERIES_DAILY` on that digest’s listing date (approximate vs official tape).
+- When a **today** or **tomorrow** post goes out, the next such post (after one or more skipped days) can prepend **day-1 open→close** (dollar **O → C** and **%**) for tickers from the **last** daily digest, using Alpha Vantage `TIME_SERIES_DAILY` on that digest’s listing date (approximate vs official tape). **Week** digests do not include this block — only the weekday **today** / **tomorrow** Telegram jobs.
+- Alpha Vantage free tier allows only **~5 `TIME_SERIES_*` calls per minute** per key; the alert script waits **13 seconds** between symbols by default (override with **`IPO_AV_TIME_SERIES_DELAY_MS`** in the workflow env if needed).
 - Adds a **buzz** line per listing: keyword + venue + price-band heuristics for “narrative heat” only (not a return or volatility forecast).
 - Stores `docs/data/alert-state.json` to avoid duplicate channel posts and to remember the **last daily digest** (`lastDailyDigest`) for that follow-up block.
 
