@@ -30,15 +30,20 @@
         "BXDC",
         "CBRS"
       ]
+    },
+    "tomorrow:2026-05-15": {
+      "sentAt": "2026-05-14T21:45:18.546Z",
+      "symbols": [
+        "RIKU"
+      ]
     }
   },
   "lastDailyDigest": {
-    "ipoDate": "2026-05-14",
+    "ipoDate": "2026-05-15",
     "symbols": [
-      "BXDC",
-      "CBRS"
+      "RIKU"
     ],
-    "sentAt": "2026-05-13T21:53:20.188Z",
+    "sentAt": "2026-05-14T21:45:18.546Z",
     "alertType": "tomorrow"
   }
 }

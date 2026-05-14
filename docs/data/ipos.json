@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T15:06:28.088Z",
+  "generatedAt": "2026-05-14T21:45:11.017Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -44,7 +44,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "hiddenReason": "unit",
       "buzzScore": 24,
       "buzzReasons": [
@@ -65,7 +65,7 @@
         "major exchange: NYSE",
         "price range: $20"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "buzzScore": 45,
       "buzzReasons": [
         "software / infra / fintech",
@@ -87,7 +87,7 @@
         "major exchange: NASDAQ",
         "price range: $150 - $160"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -108,7 +108,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -129,7 +129,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -150,7 +150,7 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
@@ -170,7 +170,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -191,7 +191,7 @@
         "major exchange: NYSE",
         "price range: $6 - $7"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
@@ -211,7 +211,7 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-14T15:06:28.088Z",
+      "updatedAt": "2026-05-14T21:45:11.017Z",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
