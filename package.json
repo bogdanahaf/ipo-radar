@@ -12,6 +12,7 @@
     "alert:ping": "node scripts/send-alert.js --type ping",
     "alert:ping:dry": "node scripts/send-alert.js --type ping --dry-run",
     "alert:week:dry": "node scripts/send-alert.js --type week --dry-run",
+    "serve:docs": "npx --yes http-server@14 ./docs -p 8765 -a 127.0.0.1 -c-1",
     "test": "node --test"
   },
   "engines": {

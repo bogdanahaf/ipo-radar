@@ -1,0 +1,38 @@
+---
+description: Use Cursor Browser MCP for IPO Radar Pages (docs/) with working URLs and screenshots
+globs: docs/**/*
+alwaysApply: false
+---
+
+# Browser MCP (IPO Radar static site)
+
+## What you (the agent) should do
+
+- For **visual verification** of `docs/` (GitHub Pages UI), use **Browser MCP** tools (`browser_navigate`, `browser_snapshot`, `browser_take_screenshot` or `take_screenshot_afterwards` on navigate/snapshot).
+- **Prefer a URL the Browser can load:**
+  - **Production:** `https://bogdanahaf.github.io/ipo-radar/` (after deploy) — reliable for MCP.
+  - **Local:** only after the user runs `npm run serve:docs`; MCP may still not reach `127.0.0.1` on some setups — if navigation stays blank, fall back to the **GitHub Pages** URL or ask the user to open local preview in their own browser.
+- After **each** CSS/HTML change that affects layout: navigate (or refresh), then **snapshot + screenshot** before declaring done.
+- Use the workflow from MCP server instructions: fresh snapshot after any action that can change the DOM.
+
+## What the user must enable in Cursor (cannot be set from git)
+
+Browser is **native** in Cursor — it is **not** added via `mcp.json` like a remote MCP server.
+
+1. **Turn Browser on**  
+   **Cursor Settings → Agent** (or **Features / Labs**, depending on version) → enable **Browser** / **Browser automation** / **Agent can use browser** (wording varies by version).
+
+2. **Tool approval**  
+   If every browser step asks for confirmation: approve when prompted, or in **Cursor Settings → Chat → Auto-run / MCP** allow **browser\_\*** tools for this workspace (only if you accept the risk).
+
+3. **Enterprise: origin allowlist**  
+   If your org uses **Browser Origin Allowlist**, add at least:  
+   `http://127.0.0.1:8765`, `http://localhost:8765`, `https://bogdanahaf.github.io`  
+   (Cursor Dashboard → Admin / MCP settings — see [Browser docs](https://cursor.com/docs/agent/browser).)
+
+4. **Screenshots**  
+   With Browser enabled, the agent receives screenshots as images when using screenshot-capable tools — use them instead of guessing layout from HTML alone.
+
+## Local preview command
+
+From repo root: `npm run serve:docs` then open `http://127.0.0.1:8765/` (or use Pages URL for MCP).
