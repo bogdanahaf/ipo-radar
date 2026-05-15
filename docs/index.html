@@ -2,20 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0e12" media="(prefers-color-scheme: dark)">
     <title>IPO Radar</title>
     <meta http-equiv="Cache-Control" content="no-cache">
-    <link rel="stylesheet" href="styles.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=2">
   </head>
   <body>
-    <header class="header">
-      <h1>IPO Radar</h1>
-      <p class="meta" id="meta">…</p>
-    </header>
-    <main>
-      <div class="list" id="list"></div>
-    </main>
-    <footer class="footer">Not advice.</footer>
-    <script type="module" src="app.js?v=1"></script>
+    <div class="shell">
+      <header class="header">
+        <div class="header__top">
+          <h1 class="logo">IPO Radar</h1>
+          <span class="badge" aria-hidden="true">live</span>
+        </div>
+        <p class="meta" id="meta">Loading…</p>
+      </header>
+      <main class="main">
+        <div class="list" id="list"></div>
+      </main>
+      <footer class="footer">
+        <span>Educational only — not financial or investment advice.</span>
+      </footer>
+    </div>
+    <script type="module" src="app.js?v=2"></script>
   </body>
 </html>

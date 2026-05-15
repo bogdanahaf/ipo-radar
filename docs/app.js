@@ -28,7 +28,7 @@ function render(payload) {
   );
 
   if (!sorted.length) {
-    list.innerHTML = `<div class="empty">empty</div>`;
+    list.innerHTML = `<div class="empty">No filtered IPOs in the feed right now.</div>`;
     return;
   }
 
@@ -41,8 +41,12 @@ function render(payload) {
 
   list.innerHTML = [...groups.entries()]
     .map(([date, rows]) => {
-      const label = date === today ? `${fmt(date)} · today` : fmt(date);
-      return `<div class="group">${escapeHtml(label)}</div>${rows.map(rowLine).join("")}`;
+      const isToday = date === today;
+      const label = isToday ? `${fmt(date)} · today` : fmt(date);
+      return `<section class="date-block${isToday ? " date-block--today" : ""}" aria-label="${escapeHtml(label)}">
+    <h2 class="date-header">${escapeHtml(label)}</h2>
+    <div class="stack">${rows.map(rowLine).join("")}</div>
+  </section>`;
     })
     .join("");
 }
@@ -55,7 +59,7 @@ function rowLine(event) {
           String(event.buzzScore)
         )}</span>`
       : "";
-  return `<div class="row">
+  return `<article class="row">
     <div class="sym">${escapeHtml(event.symbol || "—")}</div>
     <div class="body">
       <div class="name">${escapeHtml(event.companyName || "")}</div>
@@ -65,7 +69,7 @@ function rowLine(event) {
         ${buzz}
       </div>
     </div>
-  </div>`;
+  </article>`;
 }
 
 function ymdInTimeZone(date) {
