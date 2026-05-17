@@ -1,29 +1,114 @@
 {
-  "generatedAt": "2026-05-15T21:34:47.601Z",
+  "generatedAt": "2026-05-17T21:49:47.183Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 4,
-    "visible": 3,
-    "hidden": 1
+    "total": 8,
+    "visible": 2,
+    "hidden": 6
   },
   "events": [
     {
-      "symbol": "RIKU",
-      "companyName": "RIKU DINING GROUP Ltd",
+      "symbol": "CVGD",
+      "companyName": "Elevation Series Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-18",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-17T21:49:47.183Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "CVSM",
+      "companyName": "Elevation Series Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-18",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-17T21:49:47.183Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "PCLC",
+      "companyName": "FundVantage Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-18",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-17T21:49:47.183Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "PCSG",
+      "companyName": "FundVantage Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-05-18",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-17T21:49:47.183Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "APURU",
+      "companyName": "Aperture AC Unit",
       "exchange": "NASDAQ",
-      "ipoDate": "2026-05-15",
-      "priceRange": "$4 - $6",
+      "ipoDate": "2026-05-19",
+      "priceRange": "$0",
       "source": "alpha_vantage",
       "score": 55,
       "reasons": [
         "has scheduled IPO date",
         "major exchange: NASDAQ",
-        "price range: $4 - $6"
+        "price range: $0"
       ],
-      "updatedAt": "2026-05-15T21:34:47.601Z",
+      "updatedAt": "2026-05-17T21:49:47.183Z",
+      "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
@@ -43,7 +128,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-15T21:34:47.601Z",
+      "updatedAt": "2026-05-17T21:49:47.183Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -64,7 +149,7 @@
         "major exchange: NYSE",
         "price range: $6 - $7"
       ],
-      "updatedAt": "2026-05-15T21:34:47.601Z",
+      "updatedAt": "2026-05-17T21:49:47.183Z",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
@@ -84,7 +169,7 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-15T21:34:47.601Z",
+      "updatedAt": "2026-05-17T21:49:47.183Z",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
