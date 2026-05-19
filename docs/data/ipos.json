@@ -1,99 +1,15 @@
 {
-  "generatedAt": "2026-05-18T21:47:20.039Z",
+  "generatedAt": "2026-05-19T15:57:53.884Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 8,
+    "total": 4,
     "visible": 2,
-    "hidden": 6
+    "hidden": 2
   },
   "events": [
-    {
-      "symbol": "CVGD",
-      "companyName": "Elevation Series Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-05-18",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "CVSM",
-      "companyName": "Elevation Series Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-05-18",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "PCLC",
-      "companyName": "FundVantage Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-05-18",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "PCSG",
-      "companyName": "FundVantage Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-05-18",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "APURU",
       "companyName": "Aperture AC Unit",
@@ -107,7 +23,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
+      "updatedAt": "2026-05-19T15:57:53.884Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -128,7 +44,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
+      "updatedAt": "2026-05-19T15:57:53.884Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -149,7 +65,7 @@
         "major exchange: NYSE",
         "price range: $6 - $7"
       ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
+      "updatedAt": "2026-05-19T15:57:53.884Z",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
@@ -169,7 +85,7 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-18T21:47:20.039Z",
+      "updatedAt": "2026-05-19T15:57:53.884Z",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
