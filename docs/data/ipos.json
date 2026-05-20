@@ -1,36 +1,15 @@
 {
-  "generatedAt": "2026-05-19T21:55:08.103Z",
+  "generatedAt": "2026-05-20T16:06:45.685Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 4,
+    "total": 3,
     "visible": 2,
-    "hidden": 2
+    "hidden": 1
   },
   "events": [
-    {
-      "symbol": "APURU",
-      "companyName": "Aperture AC Unit",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-05-19",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-05-19T21:55:08.103Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "CNXU",
       "companyName": "Conexeu Sciences Inc.",
@@ -44,7 +23,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-05-19T21:55:08.103Z",
+      "updatedAt": "2026-05-20T16:06:45.685Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -65,7 +44,7 @@
         "major exchange: NYSE",
         "price range: $6 - $7"
       ],
-      "updatedAt": "2026-05-19T21:55:08.103Z",
+      "updatedAt": "2026-05-20T16:06:45.685Z",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
@@ -85,7 +64,7 @@
         "major exchange: NASDAQ",
         "price range: $4 - $6"
       ],
-      "updatedAt": "2026-05-19T21:55:08.103Z",
+      "updatedAt": "2026-05-20T16:06:45.685Z",
       "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
