@@ -43,14 +43,22 @@
         "RIKU",
         "BWGC"
       ]
+    },
+    "tomorrow:2026-05-27": {
+      "sentAt": "2026-05-26T22:06:26.143Z",
+      "symbols": [
+        "BWGC",
+        "RIKU"
+      ]
     }
   },
   "lastDailyDigest": {
-    "ipoDate": "2026-05-15",
+    "ipoDate": "2026-05-27",
     "symbols": [
+      "BWGC",
       "RIKU"
     ],
-    "sentAt": "2026-05-14T21:45:18.546Z",
+    "sentAt": "2026-05-26T22:06:26.143Z",
     "alertType": "tomorrow"
   }
 }
