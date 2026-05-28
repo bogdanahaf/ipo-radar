@@ -1,136 +1,96 @@
 {
-  "generatedAt": "2026-05-27T22:17:38.485Z",
+  "generatedAt": "2026-05-28T16:38:07.717Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 6,
-    "visible": 2,
-    "hidden": 4
+    "total": 4,
+    "visible": 4,
+    "hidden": 0
   },
   "events": [
     {
-      "symbol": "BTCU",
-      "companyName": "Direxion Shares ETF Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-05-27",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-05-27T22:17:38.485Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "BWGC",
-      "companyName": "BW Industrial Holdings Inc.",
-      "exchange": "NYSE",
-      "ipoDate": "2026-05-27",
-      "priceRange": "$6 - $7",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $6 - $7"
-      ],
-      "updatedAt": "2026-05-27T22:17:38.485Z",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "EVMU",
-      "companyName": "Direxion Shares ETF Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-05-27",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-05-27T22:17:38.485Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "RIKU",
-      "companyName": "RIKU DINING GROUP Ltd",
+      "symbol": "INIO",
+      "companyName": "INNIO Holding GmbH",
       "exchange": "NASDAQ",
-      "ipoDate": "2026-05-27",
-      "priceRange": "$4 - $6",
+      "ipoDate": "2026-06-04",
+      "priceRange": "$24 - $27",
       "source": "alpha_vantage",
       "score": 55,
       "reasons": [
         "has scheduled IPO date",
         "major exchange: NASDAQ",
-        "price range: $4 - $6"
+        "price range: $24 - $27"
       ],
-      "updatedAt": "2026-05-27T22:17:38.485Z",
-      "buzzScore": 24,
+      "updatedAt": "2026-05-28T16:38:07.717Z",
+      "buzzScore": 38,
       "buzzReasons": [
-        "major listing venue"
+        "major listing venue",
+        "higher indicated price band"
       ],
       "attentionBand": "low"
     },
     {
-      "symbol": "UGLD",
-      "companyName": "VelocityShares 3x Long Gold ETN Linked to the S&P GSCI Gold Index ER",
+      "symbol": "QNT",
+      "companyName": "Quantinuum Inc.",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-04",
+      "priceRange": "$45 - $50",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $45 - $50"
+      ],
+      "updatedAt": "2026-05-28T16:38:07.717Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "SSMR",
+      "companyName": "SSMR",
       "exchange": "NYSE",
-      "ipoDate": "2026-05-27",
-      "priceRange": "$0",
+      "ipoDate": "2026-06-04",
+      "priceRange": "$13.5 - $16.5",
       "source": "alpha_vantage",
       "score": 55,
       "reasons": [
         "has scheduled IPO date",
         "major exchange: NYSE",
-        "price range: $0"
+        "price range: $13.5 - $16.5"
       ],
-      "updatedAt": "2026-05-27T22:17:38.485Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
+      "updatedAt": "2026-05-28T16:38:07.717Z",
+      "buzzScore": 28,
       "buzzReasons": [
-        "major listing venue"
+        "major listing venue",
+        "mid price band"
       ],
       "attentionBand": "low"
     },
     {
-      "symbol": "USLV",
-      "companyName": "VelocityShares 3x Long Silver ETN Linked to the S&P GSCI Silver Index ER",
+      "symbol": "WHK",
+      "companyName": "WhiteHawk Income Corp",
       "exchange": "NYSE",
-      "ipoDate": "2026-05-27",
-      "priceRange": "$0",
+      "ipoDate": "2026-06-05",
+      "priceRange": "$25 - $27",
       "source": "alpha_vantage",
       "score": 55,
       "reasons": [
         "has scheduled IPO date",
         "major exchange: NYSE",
-        "price range: $0"
+        "price range: $25 - $27"
       ],
-      "updatedAt": "2026-05-27T22:17:38.485Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
+      "updatedAt": "2026-05-28T16:38:07.717Z",
+      "buzzScore": 34,
       "buzzReasons": [
-        "major listing venue"
+        "major listing venue",
+        "higher indicated price band"
       ],
       "attentionBand": "low"
     }
