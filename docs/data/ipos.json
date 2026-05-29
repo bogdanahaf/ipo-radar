@@ -1,15 +1,78 @@
 {
-  "generatedAt": "2026-05-28T22:17:06.192Z",
+  "generatedAt": "2026-05-29T16:23:31.045Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 4,
-    "visible": 4,
-    "hidden": 0
+    "total": 7,
+    "visible": 5,
+    "hidden": 2
   },
   "events": [
+    {
+      "symbol": "FISN",
+      "companyName": "Global X Fishing Industry ETF",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-05-29",
+      "priceRange": "$24 - $26",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $24 - $26"
+      ],
+      "updatedAt": "2026-05-29T16:23:31.045Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "HYPG",
+      "companyName": "Grayscale HYPE ETF Common Units of fractional undivided beneficial interest",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-05-29",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-29T16:23:31.045Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "IDIAU",
+      "companyName": "Innovative Digital Investors Acquisition Corp. Unit",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-05-29",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-05-29T16:23:31.045Z",
+      "hiddenReason": "unit",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
     {
       "symbol": "INIO",
       "companyName": "INNIO Holding GmbH",
@@ -23,7 +86,7 @@
         "major exchange: NASDAQ",
         "price range: $24 - $27"
       ],
-      "updatedAt": "2026-05-28T22:17:06.192Z",
+      "updatedAt": "2026-05-29T16:23:31.045Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -44,7 +107,7 @@
         "major exchange: NASDAQ",
         "price range: $45 - $50"
       ],
-      "updatedAt": "2026-05-28T22:17:06.192Z",
+      "updatedAt": "2026-05-29T16:23:31.045Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -65,7 +128,7 @@
         "major exchange: NYSE",
         "price range: $13.5 - $16.5"
       ],
-      "updatedAt": "2026-05-28T22:17:06.192Z",
+      "updatedAt": "2026-05-29T16:23:31.045Z",
       "buzzScore": 28,
       "buzzReasons": [
         "major listing venue",
@@ -86,7 +149,7 @@
         "major exchange: NYSE",
         "price range: $25 - $27"
       ],
-      "updatedAt": "2026-05-28T22:17:06.192Z",
+      "updatedAt": "2026-05-29T16:23:31.045Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
