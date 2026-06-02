@@ -1,265 +1,30 @@
 {
-  "generatedAt": "2026-06-02T17:02:40.486Z",
+  "generatedAt": "2026-06-02T22:34:45.302Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 12,
-    "visible": 4,
-    "hidden": 8
+    "total": 1,
+    "visible": 0,
+    "hidden": 1
   },
   "events": [
     {
-      "symbol": "AAAD",
-      "companyName": "PGIM ETF Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-02",
-      "priceRange": "$0",
+      "symbol": "I",
+      "companyName": "n",
+      "exchange": "a",
+      "ipoDate": "",
+      "priceRange": "o - r",
       "source": "alpha_vantage",
-      "score": 55,
+      "score": 10,
       "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
+        "price range: o - r"
       ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "AIQD",
-      "companyName": "Bank of Montreal",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-02",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "AIQU",
-      "companyName": "Bank of Montreal",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-02",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "HYPG",
-      "companyName": "Grayscale Hyperliquid Staking ETF Common Units of fractional undivided beneficial interest",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-02",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "PRIZ",
-      "companyName": "Zacks Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-02",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "ZINC",
-      "companyName": "Horsehead Holding Corp",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-02",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "INIO",
-      "companyName": "INNIO Holding GmbH",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-04",
-      "priceRange": "$24 - $27",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $24 - $27"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "buzzScore": 38,
-      "buzzReasons": [
-        "major listing venue",
-        "higher indicated price band"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "QNT",
-      "companyName": "Quantinuum Inc.",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-04",
-      "priceRange": "$45 - $50",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $45 - $50"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "buzzScore": 38,
-      "buzzReasons": [
-        "major listing venue",
-        "higher indicated price band"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "SSMR",
-      "companyName": "SSMR",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-04",
-      "priceRange": "$13.5 - $16.5",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $13.5 - $16.5"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "buzzScore": 28,
-      "buzzReasons": [
-        "major listing venue",
-        "mid price band"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "WHK",
-      "companyName": "WhiteHawk Income Corp",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-05",
-      "priceRange": "$25 - $27",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $25 - $27"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "buzzScore": 34,
-      "buzzReasons": [
-        "major listing venue",
-        "higher indicated price band"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "YALL",
-      "companyName": "Yorkville America Investment Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-08",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "SPCX",
-      "companyName": "SPAC and New Issue ETF",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-12",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-02T17:02:40.486Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
+      "updatedAt": "2026-06-02T22:34:45.302Z",
+      "hiddenReason": "missing_date",
+      "buzzScore": 12,
+      "buzzReasons": [],
       "attentionBand": "low"
     }
   ]
