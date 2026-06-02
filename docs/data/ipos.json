@@ -1,141 +1,15 @@
 {
-  "generatedAt": "2026-06-01T22:41:12.130Z",
+  "generatedAt": "2026-06-02T17:02:40.486Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 18,
+    "total": 12,
     "visible": 4,
-    "hidden": 14
+    "hidden": 8
   },
   "events": [
-    {
-      "symbol": "ASD",
-      "companyName": "Defiance Autism Impact ETF",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-01",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "AZUL",
-      "companyName": "Azul SA",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-01",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "BGCG",
-      "companyName": "Baillie Gifford International Concentrated Growth ETF",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-01",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "BGGG",
-      "companyName": "Baillie Gifford Long Term Global Growth ETF",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-01",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "LILAV",
-      "companyName": "Liberty Global plc",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-01",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "LILKV",
-      "companyName": "Liberty Global plc",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-01",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "AAAD",
       "companyName": "PGIM ETF Trust",
@@ -149,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -170,7 +44,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -191,7 +65,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -212,7 +86,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -233,7 +107,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -254,7 +128,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -275,7 +149,7 @@
         "major exchange: NASDAQ",
         "price range: $24 - $27"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -296,7 +170,7 @@
         "major exchange: NASDAQ",
         "price range: $45 - $50"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -317,7 +191,7 @@
         "major exchange: NYSE",
         "price range: $13.5 - $16.5"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "buzzScore": 28,
       "buzzReasons": [
         "major listing venue",
@@ -338,7 +212,7 @@
         "major exchange: NYSE",
         "price range: $25 - $27"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -359,7 +233,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -380,7 +254,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-01T22:41:12.130Z",
+      "updatedAt": "2026-06-02T17:02:40.486Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
