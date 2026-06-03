@@ -1,15 +1,78 @@
 {
-  "generatedAt": "2026-06-03T17:27:00.798Z",
+  "generatedAt": "2026-06-03T22:37:27.374Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 6,
-    "visible": 4,
-    "hidden": 2
+    "total": 10,
+    "visible": 5,
+    "hidden": 5
   },
   "events": [
+    {
+      "symbol": "AESPU",
+      "companyName": "Aeon Acquisition I Corp. Units",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-03",
+      "priceRange": "$10",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $10"
+      ],
+      "updatedAt": "2026-06-03T22:37:27.374Z",
+      "hiddenReason": "unit",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "HYPG",
+      "companyName": "Grayscale Hyperliquid Staking ETF Common Units of fractional undivided beneficial interest",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-03",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-03T22:37:27.374Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "INYY",
+      "companyName": "Tidal Trust II",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-03",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-03T22:37:27.374Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
     {
       "symbol": "INIO",
       "companyName": "INNIO Holding GmbH",
@@ -23,7 +86,7 @@
         "major exchange: NASDAQ",
         "price range: $24 - $27"
       ],
-      "updatedAt": "2026-06-03T17:27:00.798Z",
+      "updatedAt": "2026-06-03T22:37:27.374Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -36,15 +99,15 @@
       "companyName": "Quantinuum Inc.",
       "exchange": "NASDAQ",
       "ipoDate": "2026-06-04",
-      "priceRange": "$45 - $50",
+      "priceRange": "$53 - $55",
       "source": "alpha_vantage",
       "score": 55,
       "reasons": [
         "has scheduled IPO date",
         "major exchange: NASDAQ",
-        "price range: $45 - $50"
+        "price range: $53 - $55"
       ],
-      "updatedAt": "2026-06-03T17:27:00.798Z",
+      "updatedAt": "2026-06-03T22:37:27.374Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -65,7 +128,7 @@
         "major exchange: NYSE",
         "price range: $13.5 - $16.5"
       ],
-      "updatedAt": "2026-06-03T17:27:00.798Z",
+      "updatedAt": "2026-06-03T22:37:27.374Z",
       "buzzScore": 28,
       "buzzReasons": [
         "major listing venue",
@@ -75,7 +138,7 @@
     },
     {
       "symbol": "WHK",
-      "companyName": "WhiteHawk Minerals Corp",
+      "companyName": "WhiteHawk Minerals Corp.",
       "exchange": "NYSE",
       "ipoDate": "2026-06-05",
       "priceRange": "$25 - $27",
@@ -86,7 +149,7 @@
         "major exchange: NYSE",
         "price range: $25 - $27"
       ],
-      "updatedAt": "2026-06-03T17:27:00.798Z",
+      "updatedAt": "2026-06-03T22:37:27.374Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -107,11 +170,32 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-03T17:27:00.798Z",
+      "updatedAt": "2026-06-03T22:37:27.374Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "EROC",
+      "companyName": "Eagle Rock Energy Partners L.P.",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-10",
+      "priceRange": "$20 - $23",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $20 - $23"
+      ],
+      "updatedAt": "2026-06-03T22:37:27.374Z",
+      "buzzScore": 34,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
       ],
       "attentionBand": "low"
     },
@@ -128,7 +212,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-03T17:27:00.798Z",
+      "updatedAt": "2026-06-03T22:37:27.374Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [

@@ -59,15 +59,24 @@
         "SSMR",
         "WHK"
       ]
+    },
+    "tomorrow:2026-06-04": {
+      "sentAt": "2026-06-03T22:37:33.511Z",
+      "symbols": [
+        "INIO",
+        "QNT",
+        "SSMR"
+      ]
     }
   },
   "lastDailyDigest": {
-    "ipoDate": "2026-05-27",
+    "ipoDate": "2026-06-04",
     "symbols": [
-      "BWGC",
-      "RIKU"
+      "INIO",
+      "QNT",
+      "SSMR"
     ],
-    "sentAt": "2026-05-26T22:06:26.143Z",
+    "sentAt": "2026-06-03T22:37:33.511Z",
     "alertType": "tomorrow"
   }
 }
