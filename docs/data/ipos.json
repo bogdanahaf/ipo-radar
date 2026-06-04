@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:58:34.729Z",
+  "generatedAt": "2026-06-04T22:05:14.147Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,7 @@
         "major exchange: NASDAQ",
         "price range: $24 - $27"
       ],
-      "updatedAt": "2026-06-04T15:58:34.729Z",
+      "updatedAt": "2026-06-04T22:05:14.147Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -44,7 +44,7 @@
         "major exchange: NASDAQ",
         "price range: $53 - $55"
       ],
-      "updatedAt": "2026-06-04T15:58:34.729Z",
+      "updatedAt": "2026-06-04T22:05:14.147Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -65,7 +65,7 @@
         "major exchange: NYSE",
         "price range: $13.5 - $16.5"
       ],
-      "updatedAt": "2026-06-04T15:58:34.729Z",
+      "updatedAt": "2026-06-04T22:05:14.147Z",
       "buzzScore": 28,
       "buzzReasons": [
         "major listing venue",
@@ -86,7 +86,7 @@
         "major exchange: NYSE",
         "price range: $25 - $27"
       ],
-      "updatedAt": "2026-06-04T15:58:34.729Z",
+      "updatedAt": "2026-06-04T22:05:14.147Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -107,7 +107,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-04T15:58:34.729Z",
+      "updatedAt": "2026-06-04T22:05:14.147Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -128,7 +128,7 @@
         "major exchange: NYSE",
         "price range: $20 - $23"
       ],
-      "updatedAt": "2026-06-04T15:58:34.729Z",
+      "updatedAt": "2026-06-04T22:05:14.147Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -149,7 +149,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-04T15:58:34.729Z",
+      "updatedAt": "2026-06-04T22:05:14.147Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
