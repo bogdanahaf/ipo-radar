@@ -1,78 +1,15 @@
 {
-  "generatedAt": "2026-06-05T21:57:28.888Z",
+  "generatedAt": "2026-06-07T21:59:44.813Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 7,
-    "visible": 2,
-    "hidden": 5
+    "total": 4,
+    "visible": 1,
+    "hidden": 3
   },
   "events": [
-    {
-      "symbol": "DRIL",
-      "companyName": "Lannister Mining Corp.",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-05",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-05T21:57:28.888Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "IDIAU",
-      "companyName": "Innovative Digital Investors Acquisition Corp. Unit",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-05",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-05T21:57:28.888Z",
-      "hiddenReason": "unit",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "WHK",
-      "companyName": "WhiteHawk Minerals Corp.",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-05",
-      "priceRange": "$25 - $27",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $25 - $27"
-      ],
-      "updatedAt": "2026-06-05T21:57:28.888Z",
-      "buzzScore": 34,
-      "buzzReasons": [
-        "major listing venue",
-        "higher indicated price band"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "YALL",
       "companyName": "Yorkville America Investment Trust",
@@ -86,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-05T21:57:28.888Z",
+      "updatedAt": "2026-06-07T21:59:44.813Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -107,7 +44,7 @@
         "major exchange: NYSE",
         "price range: $20 - $23"
       ],
-      "updatedAt": "2026-06-05T21:57:28.888Z",
+      "updatedAt": "2026-06-07T21:59:44.813Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -128,7 +65,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-05T21:57:28.888Z",
+      "updatedAt": "2026-06-07T21:59:44.813Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -149,7 +86,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-05T21:57:28.888Z",
+      "updatedAt": "2026-06-07T21:59:44.813Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
