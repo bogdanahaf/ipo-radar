@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-06-08T22:10:38.672Z",
+  "generatedAt": "2026-06-09T15:39:06.445Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 4,
-    "visible": 1,
-    "hidden": 3
+    "total": 7,
+    "visible": 3,
+    "hidden": 4
   },
   "events": [
     {
-      "symbol": "YALL",
-      "companyName": "Yorkville America Investment Trust",
+      "symbol": "DRIL",
+      "companyName": "Lannister Mining Corp.",
       "exchange": "NYSE",
-      "ipoDate": "2026-06-08",
+      "ipoDate": "2026-06-09",
       "priceRange": "$0",
       "source": "alpha_vantage",
       "score": 55,
@@ -23,11 +23,53 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-08T22:10:38.672Z",
+      "updatedAt": "2026-06-09T15:39:06.445Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "MUZ",
+      "companyName": "Tidal Trust II",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-09",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-09T15:39:06.445Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "WHK",
+      "companyName": "WhiteHawk Minerals Corp.",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-09",
+      "priceRange": "$25 - $27",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $25 - $27"
+      ],
+      "updatedAt": "2026-06-09T15:39:06.445Z",
+      "buzzScore": 34,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
       ],
       "attentionBand": "low"
     },
@@ -44,11 +86,32 @@
         "major exchange: NYSE",
         "price range: $20 - $23"
       ],
-      "updatedAt": "2026-06-08T22:10:38.672Z",
+      "updatedAt": "2026-06-09T15:39:06.445Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
         "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "PBLS",
+      "companyName": "PBLS",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-10",
+      "priceRange": "$17 - $19",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $17 - $19"
+      ],
+      "updatedAt": "2026-06-09T15:39:06.445Z",
+      "buzzScore": 32,
+      "buzzReasons": [
+        "major listing venue",
+        "mid price band"
       ],
       "attentionBand": "low"
     },
@@ -65,7 +128,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-08T22:10:38.672Z",
+      "updatedAt": "2026-06-09T15:39:06.445Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -86,7 +149,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-08T22:10:38.672Z",
+      "updatedAt": "2026-06-09T15:39:06.445Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
