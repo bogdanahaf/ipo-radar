@@ -79,14 +79,22 @@
       "symbols": [
         "EROC"
       ]
+    },
+    "tomorrow:2026-06-10": {
+      "sentAt": "2026-06-09T22:07:46.762Z",
+      "symbols": [
+        "EROC",
+        "PBLS"
+      ]
     }
   },
   "lastDailyDigest": {
-    "ipoDate": "2026-06-05",
+    "ipoDate": "2026-06-10",
     "symbols": [
-      "WHK"
+      "EROC",
+      "PBLS"
     ],
-    "sentAt": "2026-06-04T22:05:19.378Z",
+    "sentAt": "2026-06-09T22:07:46.762Z",
     "alertType": "tomorrow"
   }
 }
