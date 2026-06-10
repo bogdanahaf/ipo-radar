@@ -1,78 +1,15 @@
 {
-  "generatedAt": "2026-06-09T22:07:39.528Z",
+  "generatedAt": "2026-06-10T16:22:02.328Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 7,
-    "visible": 3,
-    "hidden": 4
+    "total": 3,
+    "visible": 2,
+    "hidden": 1
   },
   "events": [
-    {
-      "symbol": "DRIL",
-      "companyName": "Lannister Mining Corp.",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-09",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-09T22:07:39.528Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "MUZ",
-      "companyName": "Tidal Trust II",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-09",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-09T22:07:39.528Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "WHK",
-      "companyName": "WhiteHawk Minerals Corp.",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-09",
-      "priceRange": "$25 - $27",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $25 - $27"
-      ],
-      "updatedAt": "2026-06-09T22:07:39.528Z",
-      "buzzScore": 34,
-      "buzzReasons": [
-        "major listing venue",
-        "higher indicated price band"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "EROC",
       "companyName": "Eagle Rock Energy Partners L.P.",
@@ -86,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $20 - $23"
       ],
-      "updatedAt": "2026-06-09T22:07:39.528Z",
+      "updatedAt": "2026-06-10T16:22:02.328Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -107,32 +44,11 @@
         "major exchange: NASDAQ",
         "price range: $17 - $19"
       ],
-      "updatedAt": "2026-06-09T22:07:39.528Z",
+      "updatedAt": "2026-06-10T16:22:02.328Z",
       "buzzScore": 32,
       "buzzReasons": [
         "major listing venue",
         "mid price band"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "SPCX",
-      "companyName": "SPAC and New Issue ETF",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-12",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-09T22:07:39.528Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
       ],
       "attentionBand": "low"
     },
@@ -149,7 +65,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-09T22:07:39.528Z",
+      "updatedAt": "2026-06-10T16:22:02.328Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
