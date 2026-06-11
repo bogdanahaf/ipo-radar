@@ -1,54 +1,34 @@
 {
-  "generatedAt": "2026-06-10T22:27:14.568Z",
+  "generatedAt": "2026-06-11T16:35:28.395Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 3,
-    "visible": 2,
-    "hidden": 1
+    "total": 2,
+    "visible": 0,
+    "hidden": 2
   },
   "events": [
     {
-      "symbol": "EROC",
-      "companyName": "Eagle Rock Energy Partners L.P.",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-10",
-      "priceRange": "$20 - $23",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $20 - $23"
-      ],
-      "updatedAt": "2026-06-10T22:27:14.568Z",
-      "buzzScore": 34,
-      "buzzReasons": [
-        "major listing venue",
-        "higher indicated price band"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "PBLS",
-      "companyName": "PBLS",
+      "symbol": "SPCX",
+      "companyName": "Space Exploration Technologies Corp.",
       "exchange": "NASDAQ",
-      "ipoDate": "2026-06-10",
-      "priceRange": "$17 - $19",
+      "ipoDate": "2026-06-12",
+      "priceRange": "$0",
       "source": "alpha_vantage",
       "score": 55,
       "reasons": [
         "has scheduled IPO date",
         "major exchange: NASDAQ",
-        "price range: $17 - $19"
+        "price range: $0"
       ],
-      "updatedAt": "2026-06-10T22:27:14.568Z",
-      "buzzScore": 32,
+      "updatedAt": "2026-06-11T16:35:28.395Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 36,
       "buzzReasons": [
-        "major listing venue",
-        "mid price band"
+        "mobility / climate / space",
+        "major listing venue"
       ],
       "attentionBand": "low"
     },
@@ -65,7 +45,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-10T22:27:14.568Z",
+      "updatedAt": "2026-06-11T16:35:28.395Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
