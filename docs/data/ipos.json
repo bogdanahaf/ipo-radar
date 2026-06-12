@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-11T22:22:42.155Z",
+  "generatedAt": "2026-06-12T15:46:31.454Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -12,7 +12,7 @@
   "events": [
     {
       "symbol": "SPCX",
-      "companyName": "Space Exploration Technologies Corp.",
+      "companyName": "Space Exploration Technologies Corp. Class A Common Stock",
       "exchange": "NASDAQ",
       "ipoDate": "2026-06-12",
       "priceRange": "$0",
@@ -23,7 +23,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-11T22:22:42.155Z",
+      "updatedAt": "2026-06-12T15:46:31.454Z",
       "hiddenReason": "microcap",
       "buzzScore": 36,
       "buzzReasons": [
@@ -45,7 +45,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-11T22:22:42.155Z",
+      "updatedAt": "2026-06-12T15:46:31.454Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
