@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T22:07:26.628Z",
+  "generatedAt": "2026-06-14T22:04:14.562Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -11,23 +11,22 @@
   },
   "events": [
     {
-      "symbol": "SPCX",
-      "companyName": "Space Exploration Technologies Corp. Class A Common Stock",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-12",
+      "symbol": "SPAX",
+      "companyName": "Tidal ETF Trust - Robinson Alternative Yield Pre-Merger SPAC ETF",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
       "priceRange": "$0",
       "source": "alpha_vantage",
       "score": 55,
       "reasons": [
         "has scheduled IPO date",
-        "major exchange: NASDAQ",
+        "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-12T22:07:26.628Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 36,
+      "updatedAt": "2026-06-14T22:04:14.562Z",
+      "hiddenReason": "spac",
+      "buzzScore": 20,
       "buzzReasons": [
-        "mobility / climate / space",
         "major listing venue"
       ],
       "attentionBand": "low"
@@ -45,7 +44,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-12T22:07:26.628Z",
+      "updatedAt": "2026-06-14T22:04:14.562Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
