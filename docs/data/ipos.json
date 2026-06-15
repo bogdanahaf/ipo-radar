@@ -1,15 +1,225 @@
 {
-  "generatedAt": "2026-06-15T17:30:50.356Z",
+  "generatedAt": "2026-06-15T22:34:13.995Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 2,
+    "total": 17,
     "visible": 0,
-    "hidden": 2
+    "hidden": 17
   },
   "events": [
+    {
+      "symbol": "CSEN",
+      "companyName": "Cohen & Steers Future of Energy Active ETF",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "GCSH",
+      "companyName": "Guggenheim Funds Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "GISC",
+      "companyName": "Guggenheim Funds Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "HONAV",
+      "companyName": "Honeywell Aerospace Inc. Common Stock When Issued",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "HONIV",
+      "companyName": "Honeywell International Inc. Common Stock Ex Distribution When Issued",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "HRSK",
+      "companyName": "Northern Lights Fund Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "JCAL",
+      "companyName": "J.P. Morgan Exchange-Traded Fund Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "JTNY",
+      "companyName": "J.P. Morgan Exchange-Traded Fund Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "LOFF",
+      "companyName": "Direxion Shares ETF Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "SLBT",
+      "companyName": "Russell 2000 Low Beta ETF",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
     {
       "symbol": "SPAX",
       "companyName": "Tidal ETF Trust - Robinson Alternative Yield Pre-Merger SPAC ETF",
@@ -23,9 +233,72 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-15T17:30:50.356Z",
+      "updatedAt": "2026-06-15T22:34:13.995Z",
       "hiddenReason": "spac",
       "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "SPCF",
+      "companyName": "ProShares Trust",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "TILC",
+      "companyName": "Thrivent International Large Cap ETF",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "TISC",
+      "companyName": "Thrivent International Small Cap ETF",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-15",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
       "buzzReasons": [
         "major listing venue"
       ],
@@ -44,7 +317,49 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-15T17:30:50.356Z",
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "TVIVU",
+      "companyName": "Texas Ventures Acquisition IV Corp Units",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-16",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
+      "hiddenReason": "unit",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "NVA",
+      "companyName": "Nova Minerals Corp",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-17",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-15T22:34:13.995Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
