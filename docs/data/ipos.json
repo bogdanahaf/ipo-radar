@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T16:12:17.019Z",
+  "generatedAt": "2026-06-17T22:21:02.987Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-17T16:12:17.019Z",
+      "updatedAt": "2026-06-17T22:21:02.987Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
