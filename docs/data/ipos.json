@@ -1,36 +1,15 @@
 {
-  "generatedAt": "2026-06-16T22:30:19.577Z",
+  "generatedAt": "2026-06-17T16:12:17.019Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 2,
+    "total": 1,
     "visible": 0,
-    "hidden": 2
+    "hidden": 1
   },
   "events": [
-    {
-      "symbol": "TVIVU",
-      "companyName": "Texas Ventures Acquisition IV Corp Units",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-16",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-16T22:30:19.577Z",
-      "hiddenReason": "unit",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "NVA",
       "companyName": "Nova Minerals Corp",
@@ -44,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-16T22:30:19.577Z",
+      "updatedAt": "2026-06-17T16:12:17.019Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
