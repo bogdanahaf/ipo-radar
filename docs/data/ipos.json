@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T17:15:42.325Z",
+  "generatedAt": "2026-06-22T22:22:07.225Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -44,7 +44,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -65,7 +65,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -86,7 +86,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -107,7 +107,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -128,7 +128,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 24,
       "buzzReasons": [
@@ -149,7 +149,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -170,7 +170,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -191,7 +191,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -212,7 +212,7 @@
         "major exchange: NASDAQ",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "spac",
       "buzzScore": 24,
       "buzzReasons": [
@@ -233,7 +233,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -254,7 +254,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -275,7 +275,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -296,7 +296,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -317,7 +317,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -338,7 +338,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T17:15:42.325Z",
+      "updatedAt": "2026-06-22T22:22:07.225Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
