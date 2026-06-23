@@ -1,246 +1,15 @@
 {
-  "generatedAt": "2026-06-22T22:22:07.225Z",
+  "generatedAt": "2026-06-23T15:34:04.857Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 16,
-    "visible": 0,
-    "hidden": 16
+    "total": 7,
+    "visible": 1,
+    "hidden": 6
   },
   "events": [
-    {
-      "symbol": "CAII",
-      "companyName": "Capital Associates Inc",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "CAIIW",
-      "companyName": "Collective Acquisition Corp. II Warrants",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "FTHA",
-      "companyName": "Forefront Tech Holdings Acquisition Corp Class A Ordinary Shares",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "FTHAW",
-      "companyName": "Forefront Tech Holdings Acquisition Corp Warrant",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "GCGR",
-      "companyName": "General Catalyst Global Resilience Merger Corp. Class A Ordinary Shares",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "GCGRW",
-      "companyName": "General Catalyst Global Resilience Merger Corp. Warrants",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "KEYY",
-      "companyName": "Keystone Acquisition Corp. Class A Ordinary Shares",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "KEYYW",
-      "companyName": "Keystone Acquisition Corp. Warrants",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "MCAH",
-      "companyName": "Mountain Crest Acquisition 6 Corp. Ordinary Shares",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "MCAHR",
-      "companyName": "Mountain Crest Acquisition 6 Corp. Rights",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "spac",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "YALL",
-      "companyName": "Yorkville America Investment Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-22",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "BD",
       "companyName": "Russell Investments Exchange Traded Funds",
@@ -254,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
+      "updatedAt": "2026-06-23T15:34:04.857Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -275,7 +44,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
+      "updatedAt": "2026-06-23T15:34:04.857Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -296,7 +65,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
+      "updatedAt": "2026-06-23T15:34:04.857Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -317,7 +86,7 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
+      "updatedAt": "2026-06-23T15:34:04.857Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
@@ -338,11 +107,53 @@
         "major exchange: NYSE",
         "price range: $0"
       ],
-      "updatedAt": "2026-06-22T22:22:07.225Z",
+      "updatedAt": "2026-06-23T15:34:04.857Z",
       "hiddenReason": "microcap",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "ALPXU",
+      "companyName": "Alpex Acquisition Corp",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-24",
+      "priceRange": "$10",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $10"
+      ],
+      "updatedAt": "2026-06-23T15:34:04.857Z",
+      "hiddenReason": "unit",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "DPC",
+      "companyName": "DPC Holdings Ltd",
+      "exchange": "NYSE",
+      "ipoDate": "2026-06-25",
+      "priceRange": "$28 - $32",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $28 - $32"
+      ],
+      "updatedAt": "2026-06-23T15:34:04.857Z",
+      "buzzScore": 34,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
       ],
       "attentionBand": "low"
     }
