@@ -92,15 +92,20 @@
       "symbols": [
         "DPC"
       ]
+    },
+    "tomorrow:2026-06-25": {
+      "sentAt": "2026-06-24T21:54:09.290Z",
+      "symbols": [
+        "DPC"
+      ]
     }
   },
   "lastDailyDigest": {
-    "ipoDate": "2026-06-10",
+    "ipoDate": "2026-06-25",
     "symbols": [
-      "EROC",
-      "PBLS"
+      "DPC"
     ],
-    "sentAt": "2026-06-09T22:07:46.762Z",
+    "sentAt": "2026-06-24T21:54:09.290Z",
     "alertType": "tomorrow"
   }
 }
