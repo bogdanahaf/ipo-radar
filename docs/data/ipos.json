@@ -1,120 +1,15 @@
 {
-  "generatedAt": "2026-06-23T21:57:15.359Z",
+  "generatedAt": "2026-06-24T15:18:39.946Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 7,
-    "visible": 1,
-    "hidden": 6
+    "total": 4,
+    "visible": 3,
+    "hidden": 1
   },
   "events": [
-    {
-      "symbol": "BD",
-      "companyName": "Russell Investments Exchange Traded Funds",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-23",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-23T21:57:15.359Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "BKLG",
-      "companyName": "BNY Mellon ETF Trust",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-23",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-23T21:57:15.359Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "CRIB",
-      "companyName": "Russell Investments Exchange Traded Funds",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-23",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-23T21:57:15.359Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "PRXI",
-      "companyName": "Premier Exhibitions Inc",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-23",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-23T21:57:15.359Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
-    {
-      "symbol": "THOR",
-      "companyName": "Synthorx Inc",
-      "exchange": "NYSE",
-      "ipoDate": "2026-06-23",
-      "priceRange": "$0",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NYSE",
-        "price range: $0"
-      ],
-      "updatedAt": "2026-06-23T21:57:15.359Z",
-      "hiddenReason": "microcap",
-      "buzzScore": 20,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "ALPXU",
       "companyName": "Alpex Acquisition Corp",
@@ -128,7 +23,7 @@
         "major exchange: NASDAQ",
         "price range: $10"
       ],
-      "updatedAt": "2026-06-23T21:57:15.359Z",
+      "updatedAt": "2026-06-24T15:18:39.946Z",
       "hiddenReason": "unit",
       "buzzScore": 24,
       "buzzReasons": [
@@ -138,7 +33,7 @@
     },
     {
       "symbol": "DPC",
-      "companyName": "DPC Holdings Ltd",
+      "companyName": "DPC Holdings PLC",
       "exchange": "NYSE",
       "ipoDate": "2026-06-25",
       "priceRange": "$28 - $32",
@@ -149,8 +44,50 @@
         "major exchange: NYSE",
         "price range: $28 - $32"
       ],
-      "updatedAt": "2026-06-23T21:57:15.359Z",
+      "updatedAt": "2026-06-24T15:18:39.946Z",
       "buzzScore": 34,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "ITG",
+      "companyName": "Investment Technology Group Inc",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-07-01",
+      "priceRange": "$19 - $22",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $19 - $22"
+      ],
+      "updatedAt": "2026-06-24T15:18:39.946Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "LIME",
+      "companyName": "Lime Energy Co",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-07-01",
+      "priceRange": "$24 - $26",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $24 - $26"
+      ],
+      "updatedAt": "2026-06-24T15:18:39.946Z",
+      "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
         "higher indicated price band"
