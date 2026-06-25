@@ -1,36 +1,15 @@
 {
-  "generatedAt": "2026-06-24T21:54:02.107Z",
+  "generatedAt": "2026-06-25T15:23:11.023Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 4,
-    "visible": 3,
-    "hidden": 1
+    "total": 7,
+    "visible": 7,
+    "hidden": 0
   },
   "events": [
-    {
-      "symbol": "ALPXU",
-      "companyName": "Alpex Acquisition Corp",
-      "exchange": "NASDAQ",
-      "ipoDate": "2026-06-24",
-      "priceRange": "$10",
-      "source": "alpha_vantage",
-      "score": 55,
-      "reasons": [
-        "has scheduled IPO date",
-        "major exchange: NASDAQ",
-        "price range: $10"
-      ],
-      "updatedAt": "2026-06-24T21:54:02.107Z",
-      "hiddenReason": "unit",
-      "buzzScore": 24,
-      "buzzReasons": [
-        "major listing venue"
-      ],
-      "attentionBand": "low"
-    },
     {
       "symbol": "DPC",
       "companyName": "DPC Holdings PLC",
@@ -44,11 +23,74 @@
         "major exchange: NYSE",
         "price range: $28 - $32"
       ],
-      "updatedAt": "2026-06-24T21:54:02.107Z",
+      "updatedAt": "2026-06-25T15:23:11.023Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
         "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "DSC",
+      "companyName": "DSC Holdings Ltd.",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-25",
+      "priceRange": "$16 - $18",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $16 - $18"
+      ],
+      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "buzzScore": 32,
+      "buzzReasons": [
+        "major listing venue",
+        "mid price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "BSP",
+      "companyName": "American Strategic Income Portfolio Inc Ii",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-07-01",
+      "priceRange": "$26 - $28",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $26 - $28"
+      ],
+      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "buzzScore": 38,
+      "buzzReasons": [
+        "major listing venue",
+        "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "CUX",
+      "companyName": "CopperTech Metals Inc.",
+      "exchange": "NYSE",
+      "ipoDate": "2026-07-01",
+      "priceRange": "$16 - $18",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $16 - $18"
+      ],
+      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "buzzScore": 28,
+      "buzzReasons": [
+        "major listing venue",
+        "mid price band"
       ],
       "attentionBand": "low"
     },
@@ -65,7 +107,7 @@
         "major exchange: NASDAQ",
         "price range: $19 - $22"
       ],
-      "updatedAt": "2026-06-24T21:54:02.107Z",
+      "updatedAt": "2026-06-25T15:23:11.023Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -86,11 +128,31 @@
         "major exchange: NASDAQ",
         "price range: $24 - $26"
       ],
-      "updatedAt": "2026-06-24T21:54:02.107Z",
+      "updatedAt": "2026-06-25T15:23:11.023Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
         "higher indicated price band"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "SIND",
+      "companyName": "Synthetic Industries Inc",
+      "exchange": "NYSE",
+      "ipoDate": "2026-07-01",
+      "priceRange": "$11.25 - $13.25",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NYSE",
+        "price range: $11.25 - $13.25"
+      ],
+      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "buzzScore": 20,
+      "buzzReasons": [
+        "major listing venue"
       ],
       "attentionBand": "low"
     }
