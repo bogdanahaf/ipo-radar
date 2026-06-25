@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T15:23:11.023Z",
+  "generatedAt": "2026-06-25T22:03:59.959Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
@@ -23,7 +23,7 @@
         "major exchange: NYSE",
         "price range: $28 - $32"
       ],
-      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "updatedAt": "2026-06-25T22:03:59.959Z",
       "buzzScore": 34,
       "buzzReasons": [
         "major listing venue",
@@ -44,7 +44,7 @@
         "major exchange: NASDAQ",
         "price range: $16 - $18"
       ],
-      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "updatedAt": "2026-06-25T22:03:59.959Z",
       "buzzScore": 32,
       "buzzReasons": [
         "major listing venue",
@@ -65,7 +65,7 @@
         "major exchange: NASDAQ",
         "price range: $26 - $28"
       ],
-      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "updatedAt": "2026-06-25T22:03:59.959Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -86,7 +86,7 @@
         "major exchange: NYSE",
         "price range: $16 - $18"
       ],
-      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "updatedAt": "2026-06-25T22:03:59.959Z",
       "buzzScore": 28,
       "buzzReasons": [
         "major listing venue",
@@ -107,7 +107,7 @@
         "major exchange: NASDAQ",
         "price range: $19 - $22"
       ],
-      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "updatedAt": "2026-06-25T22:03:59.959Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -128,7 +128,7 @@
         "major exchange: NASDAQ",
         "price range: $24 - $26"
       ],
-      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "updatedAt": "2026-06-25T22:03:59.959Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -149,7 +149,7 @@
         "major exchange: NYSE",
         "price range: $11.25 - $13.25"
       ],
-      "updatedAt": "2026-06-25T15:23:11.023Z",
+      "updatedAt": "2026-06-25T22:03:59.959Z",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
