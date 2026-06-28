@@ -1,15 +1,57 @@
 {
-  "generatedAt": "2026-06-26T21:47:49.178Z",
+  "generatedAt": "2026-06-28T21:58:09.220Z",
   "source": {
     "name": "Alpha Vantage IPO_CALENDAR",
     "url": "https://www.alphavantage.co/documentation/#ipo-calendar"
   },
   "counts": {
-    "total": 5,
+    "total": 7,
     "visible": 5,
-    "hidden": 0
+    "hidden": 2
   },
   "events": [
+    {
+      "symbol": "APMC",
+      "companyName": "Applied Microsystems Corp",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-29",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-28T21:58:09.220Z",
+      "hiddenReason": "microcap",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
+    {
+      "symbol": "APMCR",
+      "companyName": "AmperCap Acquisition Company Right",
+      "exchange": "NASDAQ",
+      "ipoDate": "2026-06-29",
+      "priceRange": "$0",
+      "source": "alpha_vantage",
+      "score": 55,
+      "reasons": [
+        "has scheduled IPO date",
+        "major exchange: NASDAQ",
+        "price range: $0"
+      ],
+      "updatedAt": "2026-06-28T21:58:09.220Z",
+      "hiddenReason": "spac",
+      "buzzScore": 24,
+      "buzzReasons": [
+        "major listing venue"
+      ],
+      "attentionBand": "low"
+    },
     {
       "symbol": "BSP",
       "companyName": "American Strategic Income Portfolio Inc Ii",
@@ -23,7 +65,7 @@
         "major exchange: NASDAQ",
         "price range: $26 - $28"
       ],
-      "updatedAt": "2026-06-26T21:47:49.178Z",
+      "updatedAt": "2026-06-28T21:58:09.220Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -44,7 +86,7 @@
         "major exchange: NYSE",
         "price range: $16 - $18"
       ],
-      "updatedAt": "2026-06-26T21:47:49.178Z",
+      "updatedAt": "2026-06-28T21:58:09.220Z",
       "buzzScore": 28,
       "buzzReasons": [
         "major listing venue",
@@ -65,7 +107,7 @@
         "major exchange: NASDAQ",
         "price range: $19 - $22"
       ],
-      "updatedAt": "2026-06-26T21:47:49.178Z",
+      "updatedAt": "2026-06-28T21:58:09.220Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -86,7 +128,7 @@
         "major exchange: NASDAQ",
         "price range: $24 - $26"
       ],
-      "updatedAt": "2026-06-26T21:47:49.178Z",
+      "updatedAt": "2026-06-28T21:58:09.220Z",
       "buzzScore": 38,
       "buzzReasons": [
         "major listing venue",
@@ -107,7 +149,7 @@
         "major exchange: NYSE",
         "price range: $11.25 - $13.25"
       ],
-      "updatedAt": "2026-06-26T21:47:49.178Z",
+      "updatedAt": "2026-06-28T21:58:09.220Z",
       "buzzScore": 20,
       "buzzReasons": [
         "major listing venue"
